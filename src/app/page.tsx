@@ -27,7 +27,7 @@ export default function Home() {
             This sentence is manually added by Shunsuke. Is it shown in the page on Vercel?
           </li>
           <li>
-            And the second line in "dev" branch! How about this?
+            And the second line in dev branch! How about this?
           </li>
         </ol>
 
