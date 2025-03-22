@@ -26,6 +26,9 @@ export default function Home() {
           <li>
             This sentence is manually added by Shunsuke. Is it shown in the page on Vercel?
           </li>
+          <li>
+            And the second line in "dev" branch! How about this?
+          </li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
