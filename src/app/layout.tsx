@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./Header";
+import Footer from "./Footer";
 
 
 
@@ -16,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <header>This is the header defined in layout.tsx</header>
+        <Header />
         {children}
-        <footer>This is the footer defined in layout.tsx</footer>
+        <Footer />
       </body>
     </html>
   );
