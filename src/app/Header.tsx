@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import { isLoggedIn } from "./login/actions"
+import { headers } from "next/headers"
 
 
 
@@ -10,8 +11,8 @@ const Header = async () => {
   const isloggedin = await isLoggedIn();
 
   return (
-    <div className="border-b border-gray-300">
-      <Link href="/">
+    <header className="border-b border-gray-300">
+       <Link href="/">
         <Image
           src="/product_icon.png"
           alt="Icon"
@@ -33,7 +34,7 @@ const Header = async () => {
           ログイン
         </Link>
       }
-    </div>
+    </header>
   )
 }
 
