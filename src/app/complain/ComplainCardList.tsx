@@ -1,7 +1,8 @@
 import React from "react"
 import ComplainCard, { ComplainType } from "./ComplainCard"
+import { createClient } from "@/utils/supabase/server"
 
-const ComplainCardList = () => {
+const ComplainCardList = async () => {
   const complain : ComplainType = {
     id: "1",
     createdAt: "2023-10-01T12:00:00Z",
@@ -69,9 +70,45 @@ const ComplainCardList = () => {
     bad: 3,
     category: 5,
   }
+  
+  // fetch data from supabase
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("complain")
+    .select("*")
+
+  if (error) {
+    console.error("Error fetching data from Supabase in ComplainCardList:", error);
+    return <div>Error fetching data</div>
+  }
+  if (!data) {
+    console.error("No data found in ComplainCardList");
+    return <div>No data found</div>
+  }
+  // console.log("Fetched data from Supabase in ComplainCardList:", data);
 
   return (
     <div>
+      {/* // Map through the fetched data and render ComplainCard for each item */}
+      {data.map((post: ComplainType) => {
+        const complain: ComplainType = {
+          id: post.id,
+          createdAt: post.created_at,
+          postedBy: post.posted_by,
+          complain: post.text,
+          tears: post.tears,
+          good: post.good,
+          cheer: post.cheer,
+          bad: post.bad,
+          category: post.category,
+        }
+        return (
+          <ComplainCard
+            key={complain.id}
+            complain={complain}
+          />
+        )
+      })}
       <ComplainCard complain={complain}/>
       <ComplainCard complain={complain2}/>
       <ComplainCard complain={complain3}/>
