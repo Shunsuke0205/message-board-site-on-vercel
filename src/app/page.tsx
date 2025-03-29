@@ -6,8 +6,8 @@ export default function Home() {
     <div>
       <p>記事投稿ページ</p>
       <div>
-        <p>{supabaseUrl}</p>
-        <p>{supabaseAnonKey}</p>
+        <p>{supabaseUrl != undefined ? supabaseUrl : "Shunsuke"}</p>
+        <p>{supabaseAnonKey != undefined ? supabaseAnonKey : "can you see me?"}</p>
       </div>
     </div>
   );
