@@ -20,7 +20,9 @@ export default async function RootLayout({
     <html lang="ja">
       <body>
         <Header />
-        {children}
+        <main>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
