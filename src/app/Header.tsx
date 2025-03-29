@@ -3,7 +3,11 @@ import Link from "next/link"
 import React from "react"
 
 
-const Header = () => {
+type HeaderProps = {
+  isLoggedIn: boolean
+}
+
+const Header = ({isLoggedIn}: HeaderProps) => {
   return (
     <div className="border-b border-gray-300">
       <Link href="/">
@@ -16,6 +20,15 @@ const Header = () => {
         />
         <h1>えん</h1>
       </Link>
+      {isLoggedIn ?
+        <Link href="/private">
+          マイページ
+        </Link>
+        :
+        <Link href="/login">
+          ログイン
+        </Link>
+      }
     </div>
   )
 }
