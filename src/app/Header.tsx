@@ -1,9 +1,14 @@
+import LogoutButton from "@/component/logout/LogoutButton"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
+import { isLoggedIn } from "./login/actions"
 
 
-const Header = () => {
+
+const Header = async () => {
+  const isloggedin = await isLoggedIn();
+
   return (
     <div className="border-b border-gray-300">
       <Link href="/">
@@ -16,6 +21,18 @@ const Header = () => {
         />
         <h1>えん</h1>
       </Link>
+      {isloggedin ?
+        <div>
+          <Link href="/private">
+            マイページ
+          </Link>
+          <LogoutButton />
+        </div>
+        :
+        <Link href="/login">
+          ログイン
+        </Link>
+      }
     </div>
   )
 }
