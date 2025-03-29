@@ -1,14 +1,28 @@
-import { login, signup } from './actions'
+import { login, signup } from "./actions"
 
 export default function LoginPage() {
   return (
     <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
+      <div className="max-w-xs border-b border-gray-100">
+        <label htmlFor="email">Email:</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+      <div className="max-w-xs border-b border-gray-100">
+        <label htmlFor="password">Password:</label>
+        <input id="password" name="password" type="password" required />
+      </div>
+      <button
+        formAction={login}
+        className="mt-1 ml-2 px-2 py-1 bg-gray-100 cursor-pointer rounded-lg"
+      >
+        ログイン
+      </button>
+      <button
+        formAction={signup}
+        className="mt-1 ml-2 px-2 py-1 bg-gray-100 cursor-pointer rounded-lg"
+      >
+        新規登録
+      </button>
     </form>
   )
 }
