@@ -1,4 +1,4 @@
-import LogoutButton from "@/component/logout/LogoutButton"
+import LogoutButton from "@/component/LogoutButton"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
