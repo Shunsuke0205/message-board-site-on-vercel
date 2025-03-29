@@ -11,6 +11,7 @@ const ComplainCardList = () => {
     good: 10,
     cheer: 2,
     bad: 1,
+    category: 0,
   }
   const complain2 : ComplainType = {
     id: "2",
@@ -21,6 +22,7 @@ const ComplainCardList = () => {
     good: 8,
     cheer: 1,
     bad: 0,
+    category: 1,
   }
   const complain3 : ComplainType = {
     id: "3",
@@ -31,6 +33,7 @@ const ComplainCardList = () => {
     good: 5,
     cheer: 0,
     bad: 2,
+    category: 2,
   }
   const complain4 : ComplainType = {
     id: "4",
@@ -41,6 +44,30 @@ const ComplainCardList = () => {
     good: 7,
     cheer: 3,
     bad: 1,
+    category: 4,
+  }
+  
+  const complain5 : ComplainType = {
+    id: "5",
+    createdAt: "2023-10-05T12:00:00Z",
+    postedBy: "Charlie Green",
+    complain: "This is a unique sample complain text.",
+    tears: 4,
+    good: 6,
+    cheer: 2,
+    bad: 0,
+    category: 3,
+  }
+  const complain6 : ComplainType = {
+    id: "6",
+    createdAt: "2023-10-06T12:00:00Z",
+    postedBy: "Diana Blue",
+    complain: "This is a distinct sample complain text.",
+    tears: 0,
+    good: 9,
+    cheer: 4,
+    bad: 3,
+    category: 5,
   }
 
   return (
@@ -49,6 +76,8 @@ const ComplainCardList = () => {
       <ComplainCard complain={complain2}/>
       <ComplainCard complain={complain3}/>
       <ComplainCard complain={complain4}/>
+      <ComplainCard complain={complain5}/>
+      <ComplainCard complain={complain6}/>
     </div>
   )
 }
