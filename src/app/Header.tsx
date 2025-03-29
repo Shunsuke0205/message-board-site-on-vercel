@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import { isLoggedIn } from "./login/actions"
-import { headers } from "next/headers"
 
 
 
