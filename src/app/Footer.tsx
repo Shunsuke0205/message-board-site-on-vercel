@@ -5,7 +5,6 @@ import React from "react"
 const Footer = () => {
   return (
     <div className="border-t border-gray-300">
-
       <div className="fixed bottom-0 left-0 right-0 flex justify-around bg-white border-t border-gray-300 p-2 z-50">
         <Link
           href="/posts"
