@@ -36,7 +36,7 @@ const ComplainPostForm = () => {
       .from("complain")
       .insert([{
         name: name,
-        text: body,
+        body: body,
         tears: 1,
         good: 1,
         cheer: 1,

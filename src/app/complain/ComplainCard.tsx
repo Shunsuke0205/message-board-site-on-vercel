@@ -3,8 +3,8 @@ import React from "react"
 export type ComplainType = {
   id: string;
   createdAt: string;
-  postedBy: string;
-  complain: string;
+  name: string;
+  body: string;
   tears: number;
   good: number;
   cheer: number;
@@ -39,10 +39,10 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
       className="mt-2 ml-2 border"
     >
       <h2>
-        {complain.postedBy}
+        {complain.name}
       </h2>
       <p className="whitespace-pre-wrap">
-        {complain.complain}
+        {complain.body}
       </p>
       <p>
         {new Date(complain.createdAt).toLocaleString()}

@@ -8,7 +8,7 @@ const ComplainCardList = async () => {
   const { data, error } = await supabase
     .from("complain")
     .select("*")
-    .order("created_at", { ascending: false })
+    .order("createdAt", { ascending: false })
     .limit(20);
 
   if (error) {
@@ -27,9 +27,9 @@ const ComplainCardList = async () => {
       {data.map((post: ComplainType) => {
         const complain: ComplainType = {
           id: post.id,
-          createdAt: post.created_at,
-          postedBy: post.name,
-          complain: post.text,
+          createdAt: post.createdAt,
+          name: post.name,
+          body: post.body,
           tears: post.tears,
           good: post.good,
           cheer: post.cheer,
