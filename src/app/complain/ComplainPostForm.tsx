@@ -49,6 +49,9 @@ const ComplainPostForm = () => {
     } else {
       console.log("Complain inserted:", data);
     }
+
+    setBody(""); // actually this is not necessary
+    window.location.reload();
   };
 
 
