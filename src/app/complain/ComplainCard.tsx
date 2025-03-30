@@ -51,11 +51,11 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
         <span>{repeatEmoji("\u{1F622}", complain.tears)}</span>
         <span>{repeatEmoji("\u{2764}", complain.good)}</span>
         <span>{repeatEmoji("\u{1F4E3}", complain.cheer)}</span>
-        
+
       </div>
-      <div>
+      {/* <div>
         {complain.bad} bad
-      </div>
+      </div> */}
     </article>
   )
 }
