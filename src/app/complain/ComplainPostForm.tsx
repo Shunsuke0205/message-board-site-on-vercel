@@ -28,6 +28,11 @@ const ComplainPostForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!body) {
+      alert("内容が空欄になっているみたいです。");
+      return;
+    }
+
     const supabase = createClient();
     const { data, error } = await supabase
       .from("complain")
@@ -45,6 +50,9 @@ const ComplainPostForm = () => {
       console.log("Complain inserted:", data);
     }
   };
+
+
+
   return (
     <form>
       <div>
