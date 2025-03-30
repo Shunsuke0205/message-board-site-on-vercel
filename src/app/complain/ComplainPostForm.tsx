@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react"
 const ComplainPostForm = () => {
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
-  let userId: string | null;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,7 +17,6 @@ const ComplainPostForm = () => {
         return;
       } else {
         setName(data.user.id);
-        userId = data.user.id;
       }
     };
 
