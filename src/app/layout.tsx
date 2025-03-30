@@ -6,8 +6,8 @@ import Footer from "./Footer";
 
 
 export const metadata: Metadata = {
-  title: "Create Next App",
-  description: "Practice to create a Next.js app on Vercel",
+  title: "えん",
+  description: "ひとりおやの方々のための交流サイト",
 };
 
 export default async function RootLayout({
