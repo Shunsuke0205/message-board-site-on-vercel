@@ -55,7 +55,7 @@ const ComplainPostForm = () => {
 
   return (
     <form>
-      <div>
+      <div className="mt-2">
         <label htmlFor="name">
           表示名
         </label>
@@ -64,25 +64,26 @@ const ComplainPostForm = () => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          placeholder="表示名を入力してください。"
+          className="ml-3 pb-[2px] border-b border-gray-500 focus:outline-none focus:border-b-2 focus:pb-[1px]"
         />
       </div>
-      <div>
-        <label htmlFor="body">
-          内容
-        </label>
+      <div className="mt-1 flex items-end">
         <textarea
           id="body"
           value={body}
           onChange={(e) => setBody(e.target.value)}
+          placeholder="内容を入力してください。"
+          className="w-2/3 h-32 mt-1 border-2 border-gray-300 p-4 rounded-md focus:outline-none"
         />
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="ml-3 mb-1 cursor-pointer bg-orange-200 hover:bg-orange-300 py-1 px-3 rounded-md active:translate-x-[2px] active:translate-y-[2px] [box-shadow:3px_3px_rgb(100_100_100)] active:[box-shadow:0px_0px_rgb(82_82_82)] transition duration-200"
+        >
+          吐き出す
+        </button>
       </div>
-      <button
-        type="submit"
-        onClick={handleSubmit}
-        className="cursor-pointer"
-      >
-        吐き出す
-      </button>
     </form>
   )
 }
