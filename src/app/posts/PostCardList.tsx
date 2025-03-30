@@ -3,7 +3,6 @@ import React from "react";
 import PostCard, { PostType } from "./PostCard";
 
 const PostCardList = async () => {
-  // fetch data from supabase
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("post")
@@ -20,7 +19,6 @@ const PostCardList = async () => {
     return <div>No data found</div>;
   }
 
-  console.log("Fetched data from Supabase in PostCardList:", data);
 
   return (
     <div>
