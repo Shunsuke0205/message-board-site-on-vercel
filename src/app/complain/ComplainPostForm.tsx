@@ -83,7 +83,7 @@ const ComplainPostForm = () => {
         onClick={handleSubmit}
         className="cursor-pointer"
       >
-        投稿する
+        吐き出す
       </button>
     </form>
   )
