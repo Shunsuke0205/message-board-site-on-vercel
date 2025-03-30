@@ -29,7 +29,7 @@ const Footer = () => {
         >
           <div className="text-center">
             <Image
-              src="/dm_icon.png"
+              src="/DM_not_ready.png"
               alt="Icon"
               width={40}
               height={40}
