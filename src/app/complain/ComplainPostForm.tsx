@@ -37,7 +37,7 @@ const ComplainPostForm = () => {
     const { data, error } = await supabase
       .from("complain")
       .insert([{
-        posted_by: name,
+        name: name,
         text: body,
         tears: 1,
         good: 1,

@@ -96,7 +96,7 @@ const ComplainCardList = async () => {
         const complain: ComplainType = {
           id: post.id,
           createdAt: post.created_at,
-          postedBy: post.posted_by,
+          postedBy: post.name,
           complain: post.text,
           tears: post.tears,
           good: post.good,
