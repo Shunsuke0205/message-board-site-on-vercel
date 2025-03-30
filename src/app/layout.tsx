@@ -18,7 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang="ja">
-      <body>
+      <body className="mx-10">
         <Header />
         <main>
           {children}
