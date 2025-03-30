@@ -41,7 +41,7 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
       <h2>
         {complain.postedBy}
       </h2>
-      <p>
+      <p className="whitespace-pre-wrap">
         {complain.complain}
       </p>
       <p>
