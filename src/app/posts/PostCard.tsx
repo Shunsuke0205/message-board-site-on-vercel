@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export type PostType = {
@@ -33,23 +34,25 @@ const PostCard = ({ post }: PostCardProps) => {
   }
 
   return (
-    <article
-      key={post.id}
-      className="mt-2 ml-2 border"
-    >
-      <h2>
-        {post.postedBy}
-      </h2>
-      <p className="whitespace-pre-wrap">
-        {post.content}
-      </p>
-      <p>
-        {new Date(post.createdAt).toLocaleString()}
-      </p>
-      <div>
-        <span>{repeatEmoji("\u{2764}", post.like)}</span>
-      </div>
-    </article>
+    <Link href={`/posts/${post.id}`}>
+      <article
+        key={post.id}
+        className="mt-2 ml-2 border"
+      >
+        <h2>
+          {post.postedBy}
+        </h2>
+        <p className="whitespace-pre-wrap">
+          {post.content}
+        </p>
+        <p>
+          {new Date(post.createdAt).toLocaleString()}
+        </p>
+        <div>
+          <span>{repeatEmoji("\u{2764}", post.like)}</span>
+        </div>
+      </article>
+    </Link>
   )
 }
 
