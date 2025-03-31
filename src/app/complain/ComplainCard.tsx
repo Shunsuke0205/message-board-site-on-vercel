@@ -58,7 +58,7 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
           {new Date(complain.createdAt).toLocaleString()}
         </span>
       </div>
-      <div className="px-13 pb-2">
+      <div className="sm:px-13 pb-2">
         <p className="whitespace-pre-wrap mt-4">
           {complain.body}
         </p>

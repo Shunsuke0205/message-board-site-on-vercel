@@ -4,7 +4,7 @@ import ComplainPostForm from "./ComplainPostForm"
 
 const Complain = () => {
   return (
-    <div className="flex flex-col items-start">
+    <div className="">
       <ComplainPostForm />
       <ComplainCardList />
     </div>
