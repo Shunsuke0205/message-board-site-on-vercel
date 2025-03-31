@@ -6,7 +6,7 @@ export default function Home() {
       <h1 className="text-xl">トップページ</h1>
       <h2 className="text-lg mt-3">主な使い方</h2>
       <h3 className="mt-2">
-        <Link href={"/posts"}>
+        <Link href={"/posts"} className="underline">
           Posts：返信ができる投稿機能
         </Link >
       </h3>
@@ -16,7 +16,7 @@ export default function Home() {
       </p>
 
       <h3 className="mt-2">
-        <Link href={"/complain"}>
+        <Link href={"/complain"} className="underline">
           Guchi：返信機能のない、悩みやグチを吐き出す機能
         </Link>
       </h3>
@@ -32,7 +32,7 @@ export default function Home() {
         <li>ローディングページ</li>
       </ul>
       <h3 className="mt-2">
-        <Link href={"/posts"}>
+        <Link href={"/posts"} className="underline">
           Posts
         </Link>
       </h3>
@@ -44,7 +44,7 @@ export default function Home() {
         <li>カテゴリー</li>
       </ul>
       <h3 className="mt-2">
-        <Link href={"/complain"}>
+        <Link href={"/complain"} className="underline">
           Guchi
         </Link>
       </h3>
