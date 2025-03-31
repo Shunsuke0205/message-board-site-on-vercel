@@ -15,7 +15,7 @@ export default async function PrivatePage() {
     <div>
       <LogoutButton />
       <p>Hello {data.user.email}</p>
-      <p>Your user ID is "{data.user.id}"</p>
+      <p>Your user ID is &quot;{data.user.id}&quot;</p>
     </div>
   )
 }
