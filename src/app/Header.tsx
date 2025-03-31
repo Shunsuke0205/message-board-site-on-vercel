@@ -10,26 +10,35 @@ const Header = async () => {
   const isloggedin = await isLoggedIn();
 
   return (
-    <header className="border-b border-gray-300">
-       <Link href="/">
+    <header className="py-4 border-b border-gray-300 flex justify-between items-center ">
+      <Link
+        href="/"
+        className="flex items-center"
+      >
         <Image
           src="/product_icon.png"
           alt="Icon"
-          width={60}
-          height={60}
-          className="p-2"
+          width={50}
+          height={50}
+          className=""
         />
-        <h1>えん</h1>
+        <h1 className="ml-4 text-2xl">えん</h1>
       </Link>
       {isloggedin ?
         <div>
-          <Link href="/private">
+          <Link
+            href="/private"
+            className="border border-gray-300 px-3 py-1 bg-white cursor-pointer rounded-lg hover:bg-gray-100"
+          >
             マイページ
           </Link>
           <LogoutButton />
         </div>
         :
-        <Link href="/login">
+        <Link
+          href="/login"
+          className="px-2 py-1 bg-red-100 cursor-pointer rounded-lg hover:bg-red-200"
+        >
           ログイン
         </Link>
       }
