@@ -45,7 +45,6 @@ export default async function ThreadPage({
 
   return (
     <div>
-      This is the thread page for post with ID: {id}.
       <PostCard post={originalPost} />
       <ReplyForm postId={id} />
       {replies.map((reply) => {
