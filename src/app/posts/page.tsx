@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import PostCardList from "./PostCardList";
 import PostForm from "./PostForm";
 
@@ -6,7 +6,9 @@ const page = () => {
   return (
     <div>
       <PostForm />
-      <PostCardList />
+      <Suspense fallback={<p>Loading posts...</p>}>
+        <PostCardList />
+      </Suspense>
     </div>
   );
 }
