@@ -27,7 +27,7 @@ export default async function ThreadPage({
     return <div>No data found</div>;
   }
 
-  console.log("Fetched data from Supabase in ThreadPage:", replies);
+  // console.log("Fetched data from Supabase in ThreadPage:", replies);
   const { data: originalPost, error: originalPostError } = await supabase
     .from("post")
     .select("*")
