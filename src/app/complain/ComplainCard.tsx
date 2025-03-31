@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react"
 
 export type ComplainType = {
@@ -36,22 +37,34 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
   return (
     <article
       key={complain.id}
-      className="mt-2 ml-2 border"
+      className="border border-gray-300 mt-4 px-4 py-2 "
     >
-      <h2>
-        {complain.name}
-      </h2>
-      <p className="whitespace-pre-wrap">
+      <div className="flex justify-between items-start">
+        <div className="flex items-center">
+          <span>
+            <Image
+              src="/anonymous_user_icon.png"
+              alt="Icon"
+              width={40}
+              height={40}
+              className="rounded-full bg-gray-100"
+            />
+          </span>
+          <span className="ml-3 text-lg font-bold">
+            {complain.name}
+          </span>
+        </div>
+        <span className="text-sm text-gray-500">
+          {new Date(complain.createdAt).toLocaleString()}
+        </span>
+      </div>
+      <p className="whitespace-pre-wrap mt-2">
         {complain.body}
       </p>
-      <p>
-        {new Date(complain.createdAt).toLocaleString()}
-      </p>
-      <div>
+      <div className="mt-2">
         <span>{repeatEmoji("\u{1F622}", complain.tears)}</span>
         <span>{repeatEmoji("\u{2764}", complain.good)}</span>
         <span>{repeatEmoji("\u{1F4E3}", complain.cheer)}</span>
-
       </div>
       {/* <div>
         {complain.bad} bad
