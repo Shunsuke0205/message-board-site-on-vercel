@@ -16,7 +16,7 @@ const ComplainPostForm = () => {
         console.error("Error fetching user in ComplainPostForm:", error);
         return;
       } else {
-        setName(data.user.id);
+        // setName(data.user.id);
       }
     };
 
