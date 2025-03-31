@@ -68,18 +68,18 @@ const ComplainPostForm = () => {
           className="ml-3 pb-[2px] border-b border-gray-500 focus:outline-none focus:border-b-2 focus:pb-[1px]"
         />
       </div>
-      <div className="mt-1 flex items-end">
+      <div className="mt-1 flex max-sm:flex-col sm:items-end">
         <textarea
           id="body"
           value={body}
           onChange={(e) => setBody(e.target.value)}
           placeholder="内容を入力してください。"
-          className="w-120 h-32 mt-1 border-2 border-gray-300 p-4 rounded-md focus:outline-none"
+          className="sm:w-120 h-32 mt-1 border-2 border-gray-300 p-4 rounded-md focus:outline-none"
         />
         <button
           type="submit"
           onClick={handleSubmit}
-          className="ml-3 mb-1 cursor-pointer bg-orange-200 hover:bg-orange-300 py-1 px-3 rounded-md active:translate-x-[2px] active:translate-y-[2px] [box-shadow:3px_3px_rgb(100_100_100)] active:[box-shadow:0px_0px_rgb(82_82_82)] transition duration-200"
+          className="ml-3 mb-1 cursor-pointer bg-orange-200 hover:bg-orange-300 py-1 px-3 rounded-md active:translate-x-[2px] active:translate-y-[2px] [box-shadow:3px_3px_rgb(100_100_100)] active:[box-shadow:0px_0px_rgb(82_82_82)] transition duration-200 max-sm:w-30"
         >
           吐き出す
         </button>
