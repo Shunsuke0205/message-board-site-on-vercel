@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -37,19 +38,34 @@ const PostCard = ({ post }: PostCardProps) => {
     <Link href={`/posts/${post.id}`}>
       <article
         key={post.id}
-        className="mt-2 ml-2 border"
+        className="border border-gray-300 mt-4 px-4 py-2 "
       >
-        <h2>
-          {post.postedBy}
-        </h2>
-        <p className="whitespace-pre-wrap">
-          {post.content}
-        </p>
-        <p>
-          {new Date(post.createdAt).toLocaleString()}
-        </p>
-        <div>
-          <span>{repeatEmoji("\u{2764}", post.like)}</span>
+        <div className="flex justify-between items-start">
+          <div className="flex items-center">
+            <span>
+              <Image
+                src="/anonymous_user_icon.png"
+                alt="Icon"
+                width={40}
+                height={40}
+                className="rounded-full bg-gray-100"
+              />
+            </span>
+            <span className="ml-3 text-lg font-bold">
+              {post.postedBy}
+            </span>
+          </div>
+          <span className="text-sm text-gray-500">
+            {new Date(post.createdAt).toLocaleString()}
+          </span>
+        </div>
+        <div className="px-13 pb-2">
+          <p className="whitespace-pre-wrap mt-4">
+            {post.content}
+          </p>
+          <div className="mt-2">
+            <span>{repeatEmoji("\u{2764}", post.like)}</span>
+          </div>
         </div>
       </article>
     </Link>
