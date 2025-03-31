@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import ReplyForm from "./replyForm";
 import PostCard from "../PostCard";
+import ReplyCard, { replyPostType } from "./replyCard";
 
 
 export default async function ThreadPage({
@@ -48,13 +49,24 @@ export default async function ThreadPage({
       <PostCard post={originalPost} />
       <ReplyForm postId={id} />
       {replies.map((reply) => {
+        if (reply.isDeleted) {
+          return null;
+        }
+        const replyData: replyPostType = {
+          id: reply.id,
+          createdAt: reply.createdAt,
+          originalPostId: reply.originalPostId,
+          postedBy: reply.postedBy,
+          content: reply.content,
+          like: reply.like,
+          isDeleted: reply.isDeleted,
+        };
+
         return (
-          <div key={reply.id}>
-            <p>Reply ID: {reply.id}</p>
-            <p>Posted By: {reply.postedBy}</p>
-            <p>Content: {reply.content}</p>
-            <p>Created At: {reply.createdAt}</p>
-          </div>
+          <ReplyCard
+            key={replyData.id}
+            reply={replyData}
+          />
         )
       })}
     </div>
