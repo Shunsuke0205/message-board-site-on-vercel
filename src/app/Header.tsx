@@ -26,7 +26,7 @@ const Header = async () => {
       {isloggedin ?
         <div>
           <Link
-            href="/private"
+            href="/mypage"
             className="border border-gray-300 px-3 py-1 bg-white cursor-pointer rounded-lg hover:bg-gray-100"
           >
             マイページ
