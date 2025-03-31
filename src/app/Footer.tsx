@@ -8,7 +8,7 @@ const Footer = () => {
       <div>
         &copy; 2025 Shunsuke HIRATA
       </div>
-      <div className="fixed bottom-0 left-0 right-0 flex justify-around bg-white border-t border-gray-300 p-2">
+      <div className="fixed md:max-w-screen-md md:mx-auto bottom-0 left-0 right-0 flex justify-around bg-white border-t border-gray-300 p-2">
         <Link
           href="/posts"
           className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
