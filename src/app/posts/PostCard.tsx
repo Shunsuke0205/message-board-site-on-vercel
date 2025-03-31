@@ -52,14 +52,14 @@ const PostCard = ({ post }: PostCardProps) => {
               />
             </span>
             <span className="ml-3 text-lg font-bold">
-              {post.postedBy}
+              [おなまえ]
             </span>
           </div>
           <span className="text-sm text-gray-500">
             {new Date(post.createdAt).toLocaleString()}
           </span>
         </div>
-        <div className="px-13 pb-2">
+        <div className="sm:px-13 pb-2">
           <p className="whitespace-pre-wrap mt-4">
             {post.content}
           </p>
