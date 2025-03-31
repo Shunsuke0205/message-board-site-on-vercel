@@ -9,7 +9,13 @@ export default function LoginPage() {
       </div>
       <div className="max-w-xs border-b border-gray-100">
         <label htmlFor="password">Password:</label>
-        <input id="password" name="password" type="password" required />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          minLength={8}
+          required
+        />
       </div>
       <button
         formAction={login}
