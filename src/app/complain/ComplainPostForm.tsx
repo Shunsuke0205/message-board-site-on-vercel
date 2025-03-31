@@ -74,7 +74,7 @@ const ComplainPostForm = () => {
           value={body}
           onChange={(e) => setBody(e.target.value)}
           placeholder="内容を入力してください。"
-          className="w-2/3 h-32 mt-1 border-2 border-gray-300 p-4 rounded-md focus:outline-none"
+          className="w-120 h-32 mt-1 border-2 border-gray-300 p-4 rounded-md focus:outline-none"
         />
         <button
           type="submit"
