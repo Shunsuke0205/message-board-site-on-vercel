@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/utils/supabase/server'
+import LogoutButton from '@/component/LogoutButton'
 
 export default async function PrivatePage() {
   const supabase = await createClient()
@@ -12,8 +13,9 @@ export default async function PrivatePage() {
 
   return (
     <div>
+      <LogoutButton />
       <p>Hello {data.user.email}</p>
-      <p>your user ID is {data.user.id}</p>
+      <p>Your user ID is "{data.user.id}"</p>
     </div>
   )
 }
