@@ -2,11 +2,15 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import { isLoggedIn } from "./login/actions"
+import { createClient } from "@/utils/supabase/server"
 
 
 
 const Header = async () => {
-  const isloggedin = await isLoggedIn();
+  // const isloggedin = await isLoggedIn();
+  const supabase = await createClient();
+  const { data: user, error } = await supabase.auth.getUser();
+  const isloggedin = user.user !== null;
 
   return (
     <header className="py-4 border-b border-gray-300 flex justify-between items-center ">
@@ -26,7 +30,7 @@ const Header = async () => {
       {isloggedin ?
         <div>
           <Link
-            href="/mypage"
+            href={`/profile/${user.user.id}`}
             className="border border-gray-300 px-3 py-1 bg-white cursor-pointer rounded-lg hover:bg-gray-100"
           >
             マイページ
@@ -40,7 +44,7 @@ const Header = async () => {
           ログイン
         </Link>
       }
-    </header>
+    </header >
   )
 }
 
