@@ -4,9 +4,11 @@ export default function LoginPage() {
   return (
     <div>
       <p>新規登録の際は8文字以上のパスワードを設定してください。<br />
-        8文字よりも短いと、エラーとなり登録ができません。</p>
-      <p>入力したメールアドレスに、「Supabase Auth」というところから「Confirm Your Signup」という件名でメールが届きます。</p>
-      <p>メールのリンクをクリックしたら登録完了です。</p>
+        8文字よりも短いと、エラーとなり登録ができません。
+      </p>
+      <p>入力したメールアドレスに、「Supabase Auth」というところから<br />
+      「ひとりおやのコミュニティサイト「えん」」という件名でメールが届きます。</p>
+      <p>メールのリンクをクリックしたら登録が完了します。</p>
 
       <form className="border mt-4 p-4">
         <div className="max-w-xs border-b border-gray-100">
