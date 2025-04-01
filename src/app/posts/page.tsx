@@ -5,7 +5,9 @@ import PostForm from "./PostForm";
 const page = () => {
   return (
     <div>
-      <PostForm />
+      <Suspense fallback={<p>Loading form...</p>}>
+        <PostForm />
+      </Suspense>
       <Suspense fallback={<p>Loading posts...</p>}>
         <PostCardList />
       </Suspense>
