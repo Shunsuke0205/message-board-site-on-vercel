@@ -29,7 +29,6 @@ export default function Home() {
       <h3 className="mt-2">サイト全体について</h3>
       <ul>
         <li>見た目の調整</li>
-        <li>ローディングページ</li>
       </ul>
       <h3 className="mt-2">
         <Link href={"/posts"} className="underline">
@@ -39,9 +38,9 @@ export default function Home() {
       <ul>
         <li>見た目の調整</li>
         <li>いいね</li>
-        <li>返信</li>
-        <li>スレッドページ</li>
         <li>カテゴリー</li>
+        <li>返信のカウント</li>
+        <li>返信の数の表示</li>
       </ul>
       <h3 className="mt-2">
         <Link href={"/complain"} className="underline">
@@ -55,8 +54,18 @@ export default function Home() {
         <li>カテゴリー</li>
       </ul>
       <h3 className="mt-2">DM機能</h3>
+      <h3 className="mt-2">プロフィールページ</h3>
+      <ul>
+        <li>プロフィール編集</li>
+      </ul>
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
+      <ul>
+        <li>ローディングページ</li>
+        <li>スレッドページ</li>
+        <li>返信</li>
+        <li></li>
+      </ul>
     </div>
   );
 }
