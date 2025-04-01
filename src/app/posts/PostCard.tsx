@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ReplyCount from "./replyCount";
 
 export type PostType = {
   id: string;
@@ -65,6 +66,9 @@ const PostCard = ({ post }: PostCardProps) => {
           </p>
           <div className="mt-2">
             <span>{repeatEmoji("\u{2764}", post.like)}</span>
+          </div>
+          <div>
+            返信の数：{ReplyCount(post.id)}
           </div>
         </div>
       </article>
