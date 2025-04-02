@@ -3,11 +3,9 @@
 import React, { useState } from "react"
 import { isLoggedIn } from "../login/actions";
 
-const page = () => {
+const AboutShunsuke = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const handleToggle = () => {
-    setIsExpanded(!isExpanded);
-  };
+
   const toggleExpand = async () => {
     const isloggedin = await isLoggedIn(); 
     if (!isloggedin) {
@@ -74,4 +72,4 @@ const page = () => {
   )
 }
 
-export default page
+export default AboutShunsuke
