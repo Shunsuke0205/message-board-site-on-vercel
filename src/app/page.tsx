@@ -4,6 +4,14 @@ export default function Home() {
   return (
     <div className="flex flex-col mt-5 ml-8">
       <h1 className="text-xl">トップページ</h1>
+      <Link
+        href={"/shunsuke"}
+        className="underline text-blue-700 "
+      >
+        <p className="text-lg mt-3">
+          このサイトを運営している人について
+        </p>
+      </Link>
       <h2 className="text-lg mt-3">主な使い方</h2>
       <h3 className="mt-2">
         <Link href={"/posts"} className="underline">
