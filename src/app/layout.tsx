@@ -18,7 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang="ja">
-      <body className="max-sm:mx-3 md:max-w-screen-md md:mx-auto">
+      <body className="mx-3 md:max-w-screen-md md:mx-auto">
         <Header />
         <main>
           {children}

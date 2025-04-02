@@ -30,7 +30,7 @@ const Header = async () => {
         <div>
           <Link
             href={`/profile/${user.user.id}`}
-            className="border border-gray-300 px-3 py-1 bg-white cursor-pointer rounded-lg hover:bg-gray-100"
+            className="border border-gray-300 px-3 py-1 bg-orange-100 cursor-pointer rounded-lg hover:bg-orange-100"
           >
             マイページ
           </Link>
@@ -38,7 +38,7 @@ const Header = async () => {
         :
         <Link
           href="/login"
-          className="px-2 py-1 bg-red-100 cursor-pointer rounded-lg hover:bg-red-200"
+          className="border border-gray-300 px-3 py-1 bg-orange-100 cursor-pointer rounded-lg hover:bg-orange-200"
         >
           ログイン
         </Link>

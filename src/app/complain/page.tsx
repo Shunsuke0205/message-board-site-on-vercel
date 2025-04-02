@@ -8,9 +8,11 @@ const Complain = () => {
       <Suspense fallback={<p>Loading form...</p>}>
         <ComplainPostForm />
       </Suspense>
-      <Suspense fallback={<p>Loading posts...</p>}>
-        <ComplainCardList />
-      </Suspense>
+      <div className="mt-6">
+        <Suspense fallback={<p>Loading posts...</p>}>
+          <ComplainCardList />
+        </Suspense>
+      </div>
     </div>
   )
 }
