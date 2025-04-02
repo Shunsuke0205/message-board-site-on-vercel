@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
-import { isLoggedIn } from "./login/actions"
 import { createClient } from "@/utils/supabase/server"
 
 
@@ -9,7 +8,7 @@ import { createClient } from "@/utils/supabase/server"
 const Header = async () => {
   // const isloggedin = await isLoggedIn();
   const supabase = await createClient();
-  const { data: user, error } = await supabase.auth.getUser();
+  const { data: user } = await supabase.auth.getUser();
   const isloggedin = user.user !== null;
 
   return (
