@@ -68,7 +68,7 @@ const PostCard = ({ post }: PostCardProps) => {
             <span>{repeatEmoji("\u{2764}", post.like)}</span>
           </div>
           <div>
-            返信の数：{ReplyCount(post.id)}
+            <ReplyCount postId={post.id} />
           </div>
         </div>
       </article>
