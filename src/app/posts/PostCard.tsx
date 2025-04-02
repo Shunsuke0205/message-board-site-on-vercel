@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ReplyCount from "./replyCount";
+import LocalizedDate from "@/component/LocalTime";
 
 export type PostType = {
   id: string;
@@ -57,7 +58,8 @@ const PostCard = ({ post }: PostCardProps) => {
             </span>
           </div>
           <span className="text-sm text-gray-500">
-            {new Date(post.createdAt).toLocaleString()}
+            {/* {new Date(post.createdAt).toLocaleString()} */}
+            <LocalizedDate createdAt={post.createdAt} />
           </span>
         </div>
         <div className="sm:px-13 pb-2">

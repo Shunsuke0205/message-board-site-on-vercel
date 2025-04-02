@@ -1,3 +1,4 @@
+import LocalizedDate from "@/component/LocalTime";
 import Image from "next/image";
 import React from "react"
 
@@ -55,7 +56,8 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
           </span>
         </div>
         <span className="text-sm text-gray-500">
-          {new Date(complain.createdAt).toLocaleString()}
+          {/* {new Date(complain.createdAt).toLocaleString()} */}
+          <LocalizedDate createdAt={complain.createdAt} />
         </span>
       </div>
       <div className="sm:px-13 pb-2">
