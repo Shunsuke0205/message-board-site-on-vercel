@@ -64,8 +64,10 @@ export default async function UserProfilePage({
   return (
     <div>
       <LogoutButton />
-      {/* <p>Hello {userData.user.email}</p>
-      <p>Your user ID is &quot;{userData.user.id}&quot;</p> */}
+      <p>ログイン用のメールアドレス：{userData.user.email}</p>
+      {/* <p>Your user ID is &quot;{userData.user.id}&quot;</p> */}
+      <p>おなまえ：{ profile.nickname ? profile.nickname : "未設定" }</p>
+      <p>自己紹介文：{ profile.selfIntro ? profile.selfIntro : "未設定" }</p>
     </div>
   )
 
