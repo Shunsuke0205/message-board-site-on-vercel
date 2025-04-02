@@ -19,10 +19,20 @@ const page = () => {
             心のヘルプ
           </h1>
         </div>
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-gray-900">
           教えて欲しいこと、聞いて欲しいこと、日々のつぶやき、<br />
           なんでもひとり親どうし共有しましょう。
         </p>
+        <div className="mt-2 text-sm text-gray-500 flex flex-col items-center">
+          <p>
+            &#x26a0;&#xfe0f;ご注意&#x26a0;&#xfe0f;<br />
+          </p>
+          <p>
+            削除や編集する機能は未完成なのでご注意ください。<br />
+            投稿を削除したい場合は、平田駿輔（運営者。en4singleparents@gmail.com）までご連絡ください。&#x1f647;&#x1f3fb;&#x200d;&#x2640;&#xfe0f;
+          </p>
+
+        </div>
       </div>
     )
   }
