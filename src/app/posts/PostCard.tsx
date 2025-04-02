@@ -63,10 +63,10 @@ const PostCard = ({ post }: PostCardProps) => {
           </span>
         </div>
         <div className="sm:px-13 pb-2">
-          <p className="whitespace-pre-wrap mt-4">
+          <p className="whitespace-pre-wrap mt-6">
             {post.content}
           </p>
-          <div className="mt-2">
+          <div className="mt-4">
             <span>{repeatEmoji("\u{2764}", post.like)}</span>
           </div>
           <div>
