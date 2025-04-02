@@ -49,7 +49,8 @@ const ReplyCard = ({ reply }: ReplyCardProps) => {
             />
           </span>
           <span className="ml-3 text-lg font-bold">
-            {reply.postedBy}
+            {/* {reply.postedBy} */}
+            [おなまえ]
           </span>
         </div>
         <span className="text-sm text-gray-500">
