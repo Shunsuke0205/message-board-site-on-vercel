@@ -5,11 +5,11 @@ import ComplainPostForm from "./ComplainPostForm"
 const Complain = () => {
   return (
     <div className="">
-      <Suspense fallback={<p>Loading form...</p>}>
+      <Suspense fallback={<p>表示しています・・・</p>}>
         <ComplainPostForm />
       </Suspense>
       <div className="mt-6">
-        <Suspense fallback={<p>Loading posts...</p>}>
+        <Suspense fallback={<p>表示しています・・・</p>}>
           <ComplainCardList />
         </Suspense>
       </div>

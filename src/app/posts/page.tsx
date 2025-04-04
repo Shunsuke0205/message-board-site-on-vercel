@@ -39,10 +39,10 @@ const page = () => {
   return (
     <div>
       <Explanation />
-      <Suspense fallback={<p>Loading form...</p>}>
+      <Suspense fallback={<p>表示しています・・・</p>}>
         <PostForm />
       </Suspense>
-      <Suspense fallback={<p>Loading posts...</p>}>
+      <Suspense fallback={<p>表示しています・・・</p>}>
         <PostCardList />
       </Suspense>
     </div>

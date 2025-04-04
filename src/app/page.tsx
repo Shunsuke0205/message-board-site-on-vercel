@@ -47,6 +47,7 @@ export default function Home() {
         <li>見た目の調整</li>
         <li>いいね</li>
         <li>カテゴリー</li>
+        <li>リスペクトのお願い</li>
       </ul>
       <h3 className="mt-2">
         <Link href={"/complain"} className="underline">
@@ -75,7 +76,6 @@ export default function Home() {
         <li>返信の数の表示</li>
         <li>ローディングページ</li>
         <li>スレッドページ</li>
-        <li></li>
       </ul>
     </div>
   );
