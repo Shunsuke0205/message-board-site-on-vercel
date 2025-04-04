@@ -1,5 +1,5 @@
 'use client'
 
 export default function ErrorPage() {
-  return <p>Sorry, something went wrong</p>
+  return <p>申し訳ございません。ページが存在しないか、エラーが起こりました。</p>
 }
