@@ -47,8 +47,6 @@ export default function Home() {
         <li>見た目の調整</li>
         <li>いいね</li>
         <li>カテゴリー</li>
-        <li>返信のカウント</li>
-        <li>返信の数の表示</li>
       </ul>
       <h3 className="mt-2">
         <Link href={"/complain"} className="underline">
@@ -64,14 +62,19 @@ export default function Home() {
       <h3 className="mt-2">DM機能</h3>
       <h3 className="mt-2">プロフィールページ</h3>
       <ul>
-        <li>プロフィール編集</li>
+        <li>プロフィール編集機能</li>
+        <li>他の方のプロフィールページ</li>
       </ul>
+      <h3 className="mt-2">寄付（お金のヘルプ）機能</h3>
+      <h3 className="mt-2">不用品おゆずり機能</h3>
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
+        <li>平田駿輔の自己紹介ページ</li>
+        <li>返信</li>
+        <li>返信の数の表示</li>
         <li>ローディングページ</li>
         <li>スレッドページ</li>
-        <li>返信</li>
         <li></li>
       </ul>
     </div>
