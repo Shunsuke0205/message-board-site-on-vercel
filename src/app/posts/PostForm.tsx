@@ -34,7 +34,7 @@ const PostForm = () => {
     }
 
     const supabase = createClient();
-    const { data, error } = await supabase
+    const { data : postData, error } = await supabase
       .from("post")
       .insert([{
         postedBy: userId,
@@ -44,13 +44,31 @@ const PostForm = () => {
         isAcceptReply: true,
         isDeleted: false,
       }])
+      .select("*")
+      .single();
 
     if (error) {
       console.error("Error inserting post in PostForm:", error);
     } else {
-      console.log("Post inserted:", data);
+      console.log("Post inserted:", postData);
+      console.log("Post ID:", postData.id);
+      if (!postData) {
+        console.error("No post data returned from Supabase in PostForm");
+        return;
+      }
+      const { data: reaction, error: reactionError } = await supabase
+        .from("reactionToPost")
+        .insert([{
+          id: postData.id,
+          like: 1,
+        }])
+      if (reactionError) {
+        console.error("Error inserting reaction in PostForm:", reactionError);
+      } else {
+        console.log("Reaction inserted:", reaction);
+      }
       setBody(""); // actually this is not necessary
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
