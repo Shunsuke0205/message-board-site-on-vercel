@@ -45,7 +45,6 @@ export default function Home() {
       </h3>
       <ul>
         <li>見た目の調整</li>
-        <li>いいね</li>
         <li>カテゴリー</li>
         <li>リスペクトのお願い</li>
       </ul>
@@ -71,6 +70,7 @@ export default function Home() {
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
+        <li>Postのハートリアクション機能</li>
         <li>平田駿輔の自己紹介ページ</li>
         <li>返信</li>
         <li>返信の数の表示</li>
