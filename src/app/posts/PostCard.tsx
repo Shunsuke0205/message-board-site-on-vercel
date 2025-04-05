@@ -21,22 +21,6 @@ export type PostCardProps = {
 };
 
 const PostCard = ({ post }: PostCardProps) => {
-  const repeatEmoji = (emoji: string, count: number) => {
-    if (count >= 1 && count <= 10) {
-      return (
-        <span>
-          {emoji.repeat(count)}
-        </span>
-      )
-    } else {
-      return (
-        <span>
-          {emoji} {count}
-        </span>
-      )
-    }
-  }
-
   return (
     <article
       key={post.id}
