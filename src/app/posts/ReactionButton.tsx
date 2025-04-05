@@ -41,7 +41,7 @@ const ReactionButton = ({ post }: PostCardProps) => {
   };
 
   const updateLikeCountOnServer = async (postId: string, newLikeCount: number) => {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("reactionToPost")
       .update({ like: newLikeCount })
       .eq("id", postId);
