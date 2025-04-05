@@ -10,7 +10,6 @@ export type PostType = {
   createdAt: string;
   postedBy: string;
   content: string;
-  like: number;
   category: number;
   isAcceptReply: boolean;
   isDeleted: boolean;

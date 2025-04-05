@@ -39,7 +39,6 @@ const PostForm = () => {
       .insert([{
         postedBy: userId,
         content: body,
-        like: 1,
         category: 0,
         isAcceptReply: true,
         isDeleted: false,
