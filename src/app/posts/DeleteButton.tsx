@@ -60,7 +60,7 @@ const DeleteButton = ({ post } : PostCardProps) => {
             rounded cursor-pointer"
           onClick={deleteHandler}
         >
-          削除
+          投稿を消す
         </button>
       </div>
     )
