@@ -63,7 +63,7 @@ const ReactionButton = ({ post }: PostCardProps) => {
     } else {
       return (
         <span>
-          {emoji} {count}
+          {emoji} x {count}
         </span>
       )
     }
@@ -77,13 +77,14 @@ const ReactionButton = ({ post }: PostCardProps) => {
         onClick={toggleLike}
         className="cursor-pointer"
       >
-        <div>
-          <span
-            className={`text-2xl ${isLiked ? "text-red-500" : "text-gray-500"}`}
-          >
-            {isLiked ? "\u{1F49A}" : "\u{1F49B}"}
-          </span>
-          <span>{repeatEmoji("\u{2764}", likeCount)}</span>
+        <div 
+          className={`
+            px-3 py-1
+            border-1 border-gray-300
+            rounded-xl
+            ${isLiked ? "bg-red-100" : "bg-gray-100"}`}
+        >
+          <span>{repeatEmoji("\u{1F497}", likeCount)}</span>
         </div>
       </button>
     </div>
