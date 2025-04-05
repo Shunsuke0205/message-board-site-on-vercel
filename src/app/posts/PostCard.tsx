@@ -4,6 +4,7 @@ import React from "react";
 import ReplyCount from "./replyCount";
 import LocalizedDate from "@/component/LocalTime";
 import ReactionButton from "./ReactionButton";
+import DeleteButton from "./DeleteButton";
 
 export type PostType = {
   id: string;
@@ -59,6 +60,7 @@ const PostCard = ({ post }: PostCardProps) => {
             <ReplyCount postId={post.id} />
           </div>
         </Link>
+        <DeleteButton post={post} />
       </div>
     </article>
   )
