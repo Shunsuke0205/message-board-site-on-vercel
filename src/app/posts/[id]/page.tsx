@@ -47,13 +47,13 @@ export default async function ThreadPage({
 
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>表示しています・・・</div>}>
         <PostCard post={originalPost} />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>表示しています・・・</div>}>
         <ReplyForm postId={id} />
       </Suspense>
-      <Suspense fallback={<div>Loading replies...</div>}>
+      <Suspense fallback={<div>表示しています・・・</div>}>
         {replies.map((reply) => {
           if (reply.isDeleted) {
             return null;
