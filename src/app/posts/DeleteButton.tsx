@@ -53,7 +53,11 @@ const DeleteButton = ({ post } : PostCardProps) => {
     (userId !== post.postedBy) ? null : (
       <div>
         <button
-          className="bg-red-500 text-white px-6 py-2 rounded cursor-pointer"
+          className="
+            mt-3 px-4 py-1 
+            bg-red-400 
+            font-bold text-white 
+            rounded cursor-pointer"
           onClick={deleteHandler}
         >
           削除
