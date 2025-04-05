@@ -6,7 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 
 const ReactionButton = ({ post }: PostCardProps) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(post.like);
+  const [likeCount, setLikeCount] = useState(post?.like ? post.like : 0);
 
   const supabase = createClient();
 
