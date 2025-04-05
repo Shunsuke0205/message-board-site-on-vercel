@@ -68,9 +68,6 @@ const PostCard = ({ post }: PostCardProps) => {
             {post.content}
           </p>
         </Link>
-        <div className="mt-4">
-          <span>{repeatEmoji("\u{2764}", post.like)}</span>
-        </div>
         <div className="mt-2">
           <ReactionButton post={post} />
         </div>
