@@ -67,7 +67,7 @@ const PostForm = () => {
         console.log("Reaction inserted:", reaction);
       }
       setBody(""); // actually this is not necessary
-      // window.location.reload();
+      window.location.reload();
     }
   };
 
