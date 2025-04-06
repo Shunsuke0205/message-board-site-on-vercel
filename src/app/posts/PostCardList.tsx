@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import React from "react";
-import PostCard, { PostType } from "./PostCard";
+import PostCard from "./PostCard";
+import { PostProps } from "@/utils/postType";
 
 const PostCardList = async () => {
   const supabase = await createClient();
@@ -22,12 +23,12 @@ const PostCardList = async () => {
 
   return (
     <div>
-      {data.map((post: PostType) => {
-        const postData: PostType = {
+      {data.map((post) => {
+        const postData: PostProps = {
           id: post.id,
           createdAt: post.createdAt,
           postedBy: post.postedBy,
-          content: post.content,
+          body: post.content,
           category: post.category,
           isAcceptReply: post.isAcceptReply,
           isDeleted: post.isDeleted,

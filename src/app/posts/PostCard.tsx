@@ -5,19 +5,11 @@ import ReplyCount from "./replyCount";
 import LocalizedDate from "@/component/LocalTime";
 import ReactionButton from "./ReactionButton";
 import DeleteButton from "./DeleteButton";
+import { PostProps } from "@/utils/postType";
 
-export type PostType = {
-  id: string;
-  createdAt: string;
-  postedBy: string;
-  content: string;
-  category: number;
-  isAcceptReply: boolean;
-  isDeleted: boolean;
-};
 
 export type PostCardProps = {
-  post: PostType;
+  post: PostProps;
 };
 
 const PostCard = ({ post }: PostCardProps) => {
@@ -49,7 +41,7 @@ const PostCard = ({ post }: PostCardProps) => {
       <div className="sm:px-13 pb-2">
         <Link href={`/posts/${post.id}`}>
           <p className="whitespace-pre-wrap mt-6">
-            {post.content}
+            {post.body}
           </p>
         </Link>
         <div className="mt-2">
