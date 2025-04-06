@@ -47,6 +47,8 @@ export default function Home() {
         <li>見た目の調整</li>
         <li>カテゴリー</li>
         <li>リスペクトのお願い</li>
+        <li>返信を受け付けるオンオフ機能</li>
+        <li>リアクションの記録</li>
       </ul>
       <h3 className="mt-2">
         <Link href={"/complain"} className="underline">
@@ -70,6 +72,7 @@ export default function Home() {
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
+        <li>投稿と返信の削除機能</li>
         <li>Postのハートリアクション機能</li>
         <li>平田駿輔の自己紹介ページ</li>
         <li>返信</li>
