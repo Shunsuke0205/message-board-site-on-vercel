@@ -1,13 +1,17 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { PostCardProps } from "./PostCard"
 import { createClient } from "@/utils/supabase/client"
+import { PostCommonProps } from "@/utils/postType"
 
-const DeleteButton = ({ post } : PostCardProps) => {
+type DeleteButtonProps = {
+  post: PostCommonProps
+};
+
+const DeleteButton = ({ post } : DeleteButtonProps) => {
   const [userId, setUserId] = useState<string | null>(null);
   const supabase = createClient();
-  
+
   //useEffect and fetch the userId
   useEffect(() => {
     const fetchUserId = async () => {
