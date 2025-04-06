@@ -38,7 +38,7 @@ const PostForm = () => {
       .from("post")
       .insert([{
         postedBy: userId,
-        content: body,
+        body: body,
         category: 0,
         isAcceptReply: true,
         isDeleted: false,
