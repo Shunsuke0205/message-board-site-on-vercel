@@ -39,7 +39,7 @@ const ReplyForm = ({ postId }: { postId: string }) => {
       .insert([{
         originalPostId: postId,
         postedBy: userId,
-        content: body,
+        body: body,
         like: 1,
         isDeleted: false,
       }])

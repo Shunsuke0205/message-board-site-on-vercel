@@ -28,7 +28,7 @@ const PostCardList = async () => {
           id: post.id,
           createdAt: post.createdAt,
           postedBy: post.postedBy,
-          body: post.content,
+          body: post.body,
           category: post.category,
           isAcceptReply: post.isAcceptReply,
           isDeleted: post.isDeleted,

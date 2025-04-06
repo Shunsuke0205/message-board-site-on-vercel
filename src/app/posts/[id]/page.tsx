@@ -64,7 +64,7 @@ export default async function ThreadPage({
             createdAt: reply.createdAt,
             originalPostId: reply.originalPostId,
             postedBy: reply.postedBy,
-            body: reply.content,
+            body: reply.body,
             isDeleted: reply.isDeleted,
           };
 
