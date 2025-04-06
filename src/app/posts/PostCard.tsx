@@ -52,7 +52,7 @@ const PostCard = ({ post }: PostCardProps) => {
             <ReplyCount postId={post.id} />
           </div>
         </Link>
-        <DeleteButton post={post} />
+        <DeleteButton post={post} tableName="post" />
       </div>
     </article>
   )

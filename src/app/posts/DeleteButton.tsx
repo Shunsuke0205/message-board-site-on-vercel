@@ -5,10 +5,11 @@ import { createClient } from "@/utils/supabase/client"
 import { PostCommonProps } from "@/utils/postType"
 
 type DeleteButtonProps = {
-  post: PostCommonProps
+  post: PostCommonProps;
+  tableName?: string;
 };
 
-const DeleteButton = ({ post } : DeleteButtonProps) => {
+const DeleteButton = ({ post, tableName } : DeleteButtonProps) => {
   const [userId, setUserId] = useState<string | null>(null);
   const supabase = createClient();
 
@@ -42,7 +43,7 @@ const DeleteButton = ({ post } : DeleteButtonProps) => {
     }
     // delete the post
     const { error } = await supabase
-      .from("post")
+      .from(tableName || "post")
       .update({ isDeleted: true })
       .eq("id", post.id)
       .eq("postedBy", userId);

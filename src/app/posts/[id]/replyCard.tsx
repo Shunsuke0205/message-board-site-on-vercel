@@ -60,7 +60,7 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
             {repeatEmoji("\u{2764}", reply.like)}
           </span> */}
         </div>
-        {/* <DeleteButton post={reply} /> */}
+        <DeleteButton post={reply} tableName="replyToPost" />
       </div>
     </article>
   )
