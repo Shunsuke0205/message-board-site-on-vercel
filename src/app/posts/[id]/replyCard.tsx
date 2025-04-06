@@ -10,22 +10,6 @@ export type ReplyCardProps = {
 };
 
 const ReplyCard = ({ reply } : ReplyCardProps) => {
-  const repeatEmoji = (emoji: string, count: number) => {
-    if (count >= 1 && count <= 10) {
-      return (
-        <span>
-          {emoji.repeat(count)}
-        </span>
-      )
-    } else {
-      return (
-        <span>
-          {emoji} {count}
-        </span>
-      )
-    }
-  }
-
   return (
     <article
       key={reply.id}
