@@ -37,12 +37,12 @@ export async function GET(request: NextRequest) {
 
       if (profileError) {
         console.error("Error creating profile in confirm route:", profileError)
-        // return redirect('/error')
+        return redirect('/error')
       }
 
 
       // redirect user to specified redirect URL or root of app
-      // redirect(next)
+      redirect(next)
     }
   }
 
