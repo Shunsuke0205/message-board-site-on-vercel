@@ -1,8 +1,9 @@
 import { createClient } from "@/utils/supabase/server";
 import ReplyForm from "./replyForm";
 import PostCard from "../PostCard";
-import ReplyCard, { replyPostType } from "./replyCard";
+import ReplyCard from "./replyCard";
 import { Suspense } from "react";
+import { ReplyProps } from "@/utils/postType";
 
 
 export default async function ThreadPage({
@@ -58,13 +59,12 @@ export default async function ThreadPage({
           if (reply.isDeleted) {
             return null;
           }
-          const replyData: replyPostType = {
+          const replyData: ReplyProps = {
             id: reply.id,
             createdAt: reply.createdAt,
             originalPostId: reply.originalPostId,
             postedBy: reply.postedBy,
-            content: reply.content,
-            like: reply.like,
+            body: reply.content,
             isDeleted: reply.isDeleted,
           };
 

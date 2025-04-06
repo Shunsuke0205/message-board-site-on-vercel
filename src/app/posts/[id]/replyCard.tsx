@@ -1,21 +1,15 @@
 import Image from "next/image";
+import DeleteButton from "../DeleteButton";
+import { ReplyProps } from "@/utils/postType";
 
 
-export type replyPostType = {
-  id: string;
-  createdAt: string;
-  originalPostId: string;
-  postedBy: string;
-  content: string;
-  like: number;
-  isDeleted: boolean;
+
+
+export type ReplyCardProps = {
+  reply: ReplyProps;
 };
 
-type ReplyCardProps = {
-  reply: replyPostType;
-};
-
-const ReplyCard = ({ reply }: ReplyCardProps) => {
+const ReplyCard = ({ reply } : ReplyCardProps) => {
   const repeatEmoji = (emoji: string, count: number) => {
     if (count >= 1 && count <= 10) {
       return (
@@ -59,13 +53,14 @@ const ReplyCard = ({ reply }: ReplyCardProps) => {
       </div>
       <div className="px-13 pb-2">
         <p className="whitespace-pre-wrap mt-4">
-          {reply.content}
+          {reply.body}
         </p>
         <div className="mt-2">
-          <span>
+          {/* <span>
             {repeatEmoji("\u{2764}", reply.like)}
-          </span>
+          </span> */}
         </div>
+        {/* <DeleteButton post={reply} /> */}
       </div>
     </article>
   )
