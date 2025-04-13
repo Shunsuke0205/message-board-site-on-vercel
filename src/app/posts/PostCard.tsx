@@ -13,7 +13,6 @@ export type PostCardProps = {
 };
 
 const PostCard = ({ post }: PostCardProps) => {
-  console.log(post.profile);
   return (
     <article
       key={post.id}
