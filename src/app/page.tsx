@@ -49,8 +49,6 @@ export default function Home() {
         <li>リスペクトのお願い</li>
         <li>返信を受け付けるオンオフ機能</li>
         <li>リアクションの記録</li>
-        <li>登録したニックネームの表示</li>
-        <li>ユーザのプロフィールページへのリンク</li>
       </ul>
       <h3 className="mt-2">
         <Link href={"/complain"} className="underline">
@@ -64,16 +62,14 @@ export default function Home() {
         <li>カテゴリー</li>
       </ul>
       <h3 className="mt-2">DM機能</h3>
-      <h3 className="mt-2">プロフィールページ</h3>
-      <ul>
-        <li>他の方のプロフィールページ</li>
-        <li>編集直後のページリロード</li>
-      </ul>
       <h3 className="mt-2">寄付（お金のヘルプ）機能</h3>
       <h3 className="mt-2">不用品おゆずり機能</h3>
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
+        <li>自分以外の方のプロフィールページ</li>
+        <li>登録したニックネームの表示</li>
+        <li>ユーザのプロフィールページへのリンク</li>
         <li>プロフィールページとプロフィール編集</li>
         <li>返信の数のデバッグ</li>
         <li>投稿と返信の削除機能</li>
