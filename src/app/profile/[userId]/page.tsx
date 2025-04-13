@@ -18,10 +18,6 @@ export default async function UserProfilePage({
   }
   if (userData.user.id !== userId) {
     console.error("User ID mismatch in UserProfilePage");
-    return <div>User ID mismatch</div>;
-  } else {
-    console.log(userData.user.id);
-    console.log(userId);
   }
 
   let profile: ProfileType = {
@@ -80,20 +76,24 @@ export default async function UserProfilePage({
 
   return (
     <div>
-      <LogoutButton />
+      { userData.user.id === userId ? <LogoutButton /> : null }
       <div className="mt-3 px-4 py-2 border-2 border-gray-300 rounded-lg">
-        <p>ログイン用のメールアドレス：{userData.user.email}</p>
+        { userData.user.id === userId ? <p>ログイン用のメールアドレス：{userData.user.email}</p> : null }
         <p>おなまえ：{ profile.nickname ? profile.nickname : "未設定" }</p>
         <Sex sex={profile.sex} />
         <p>自己紹介文：{ profile.selfIntro ? profile.selfIntro : "未設定" }</p>
       </div>
-      <Link 
-        href="/profile/edit"
-      >
-        <button className="mt-4 px-3 py-2 border-2 border-gray-300 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-700 transition duration-300">
-          プロフィールを編集する
-        </button>
-      </Link>
+      { userData.user.id === userId ? 
+        <Link 
+          href="/profile/edit"
+        >
+          <button className="mt-4 px-3 py-2 border-2 border-gray-300 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-700 transition duration-300">
+            プロフィールを編集する
+          </button>
+        </Link>
+      :
+        null
+      }
     </div>
   )
 
