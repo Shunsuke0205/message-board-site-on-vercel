@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { ProfileType } from "../profileType";
 import LogoutButton from "@/component/LogoutButton";
+import Link from "next/link";
 
 
 export default async function UserProfilePage({
@@ -60,14 +61,39 @@ export default async function UserProfilePage({
   }
 
 
+  type SexProps = {
+    sex: string | null;
+  }
+  const Sex = ({ sex } : SexProps) => {
+    let sexInJapanese = "";
+    if (sex === "male") {
+      sexInJapanese = "男性";
+    } else if (sex === "female") {
+      sexInJapanese = "女性";
+    } else if (sex == null || sex === "noAnswer") {
+      sexInJapanese = "未設定";
+    }
+    return (
+      <p>性別：{ sexInJapanese }</p>
+    )
+  }
 
   return (
     <div>
       <LogoutButton />
-      <p>ログイン用のメールアドレス：{userData.user.email}</p>
-      {/* <p>Your user ID is &quot;{userData.user.id}&quot;</p> */}
-      <p>おなまえ：{ profile.nickname ? profile.nickname : "未設定" }</p>
-      <p>自己紹介文：{ profile.selfIntro ? profile.selfIntro : "未設定" }</p>
+      <div className="mt-3 px-4 py-2 border-2 border-gray-300 rounded-lg">
+        <p>ログイン用のメールアドレス：{userData.user.email}</p>
+        <p>おなまえ：{ profile.nickname ? profile.nickname : "未設定" }</p>
+        <Sex sex={profile.sex} />
+        <p>自己紹介文：{ profile.selfIntro ? profile.selfIntro : "未設定" }</p>
+      </div>
+      <Link 
+        href="/profile/edit"
+      >
+        <button className="mt-4 px-3 py-2 border-2 border-gray-300 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-700 transition duration-300">
+          プロフィールを編集する
+        </button>
+      </Link>
     </div>
   )
 
