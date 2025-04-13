@@ -7,7 +7,13 @@ const PostCardList = async () => {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("post")
-    .select("*")
+    .select(`
+      *,
+      profile(
+        nickname,
+        icon
+      )
+    `)
     .order("createdAt", { ascending: false })
     .limit(20);
 
