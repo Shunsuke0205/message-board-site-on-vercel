@@ -38,6 +38,10 @@ const PostCardList = async () => {
           category: post.category,
           isAcceptReply: post.isAcceptReply,
           isDeleted: post.isDeleted,
+          profile: {
+            nickname: post.profile?.nickname || "",
+            icon: post.profile?.icon || -1,
+          },
         };
 
         if (postData.isDeleted) {

@@ -13,6 +13,7 @@ export type PostCardProps = {
 };
 
 const PostCard = ({ post }: PostCardProps) => {
+  console.log(post.profile);
   return (
     <article
       key={post.id}
@@ -30,7 +31,7 @@ const PostCard = ({ post }: PostCardProps) => {
             />
           </span>
           <span className="ml-3 text-lg font-bold">
-            [おなまえ]
+            {post.profile?.nickname == '' ? "[おなまえ]" : post.profile?.nickname}
           </span>
         </div>
         <span className="text-sm text-gray-500">

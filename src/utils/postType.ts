@@ -4,6 +4,10 @@ export type PostCommonProps = {
   postedBy: string;
   body: string;
   isDeleted: boolean;
+  profile?: {
+    nickname: string;
+    icon: number;
+  }
 };
 
 export type PostProps = PostCommonProps & {
