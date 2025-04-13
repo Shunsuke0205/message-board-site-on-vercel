@@ -39,7 +39,7 @@ const PostCardList = async () => {
           isAcceptReply: post.isAcceptReply,
           isDeleted: post.isDeleted,
           profile: {
-            nickname: post.profile?.nickname || "",
+            nickname: post.profile?.nickname,
             icon: post.profile?.icon || -1,
           },
         };

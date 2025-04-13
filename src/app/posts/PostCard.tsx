@@ -30,7 +30,7 @@ const PostCard = ({ post }: PostCardProps) => {
             />
           </span>
           <span className="ml-3 text-lg font-bold">
-            {post.profile?.nickname == '' ? "[おなまえ]" : post.profile?.nickname}
+            {post.profile?.nickname == null ? "[おなまえ]" : post.profile?.nickname}
           </span>
         </div>
         <span className="text-sm text-gray-500">
