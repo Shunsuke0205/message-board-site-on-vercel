@@ -9,18 +9,18 @@ type ReplyCountProps = {
 const ReplyCount =  ({ postId } : ReplyCountProps) => {
   async function getReplyCount() {
     const supabase = await createClient();
-    const { data, error } = await supabase
+    const { count, error } = await supabase
       .from("replyToPost")
-      .select("*")
-      .eq("originalPostId", postId)
-      .order("createdAt", { ascending: false });
+      .select("*", { count: "exact" })
+      .eq("isDeleted", false)
+      .eq("originalPostId", postId);
 
     if (error) {
       console.error("Error fetching data from Supabase in ReplyCount:", error);
       return <div>Error fetching data</div>;
     }
 
-    return data.length;
+    return count;
   }
 
   const count = getReplyCount();
