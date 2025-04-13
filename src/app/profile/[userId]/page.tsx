@@ -81,13 +81,18 @@ export default async function UserProfilePage({
   return (
     <div>
       <LogoutButton />
-      <p>ログイン用のメールアドレス：{userData.user.email}</p>
-      {/* <p>Your user ID is &quot;{userData.user.id}&quot;</p> */}
-      <p>おなまえ：{ profile.nickname ? profile.nickname : "未設定" }</p>
-      <Sex sex={profile.sex} />
-      <p>自己紹介文：{ profile.selfIntro ? profile.selfIntro : "未設定" }</p>
-      <Link href="/profile/edit">
-        <button>プロフィールを編集する</button>
+      <div className="mt-3 px-4 py-2 border-2 border-gray-300 rounded-lg">
+        <p>ログイン用のメールアドレス：{userData.user.email}</p>
+        <p>おなまえ：{ profile.nickname ? profile.nickname : "未設定" }</p>
+        <Sex sex={profile.sex} />
+        <p>自己紹介文：{ profile.selfIntro ? profile.selfIntro : "未設定" }</p>
+      </div>
+      <Link 
+        href="/profile/edit"
+      >
+        <button className="mt-4 px-3 py-2 border-2 border-gray-300 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-700 transition duration-300">
+          プロフィールを編集する
+        </button>
       </Link>
     </div>
   )

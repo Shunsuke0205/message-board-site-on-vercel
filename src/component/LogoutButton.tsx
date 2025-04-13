@@ -33,7 +33,7 @@ const LogoutButton = () => {
       <div>
         <button
           onClick={logout}
-          className="px-3 py-1 bg-white cursor-pointer rounded-lg hover:bg-gray-200 border border-gray-300"
+          className="mt-3 px-3 py-1 bg-white cursor-pointer rounded-lg hover:bg-gray-200 border border-gray-300"
         >
           ログアウト
         </button>
