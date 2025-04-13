@@ -1,7 +1,7 @@
 "use client"
 
 import { createClient } from "@/utils/supabase/client"
-import React, { use, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 
 type UserProfileProps = {
   nickname: string;
@@ -86,7 +86,7 @@ const EditPage = () => {
       return;
     }
     
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("profile")
       .update({
         nickname: nickname,
