@@ -29,14 +29,10 @@ const ReactionButton = ({ post }: PostCardProps) => {
   }, [post.id, supabase]);
 
   const toggleLike = async () => {
-    console.log("Toggle like button clicked");
-    console.log("Current like count:", likeCount);
     const newLikeCount = isLiked ? likeCount - 1 : likeCount + 1;
     setLikeCount(newLikeCount);
     setIsLiked(!isLiked);
-    console.log("New like count:", newLikeCount);
 
-    console.log("Post ID:", post.id);
     await updateLikeCountOnServer(post.id, newLikeCount);
   };
 
@@ -48,8 +44,6 @@ const ReactionButton = ({ post }: PostCardProps) => {
 
     if (error) {
       console.error("Error updating like count in ReactionButton:", error);
-    } else {
-      console.log("Like count updated successfully for post ID:", postId);
     }
   };
 
