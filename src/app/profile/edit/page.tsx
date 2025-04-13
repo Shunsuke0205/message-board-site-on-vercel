@@ -101,6 +101,9 @@ const EditPage = () => {
     if (error) {
       console.error("Error updating user profile in EditPage:", error);
       alert("プロフィールの更新に失敗しました。");
+    } else {
+      // succeed in updating
+      window.location.reload();
     }
   }
 
