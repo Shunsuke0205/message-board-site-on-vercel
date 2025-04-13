@@ -27,8 +27,7 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
             />
           </span>
           <span className="ml-3 text-lg font-bold">
-            {/* {reply.postedBy} */}
-            [おなまえ]
+            {reply.profile?.nickname == null ? "[おなまえ]" : reply.profile?.nickname}
           </span>
         </div>
         <span className="text-sm text-gray-500">

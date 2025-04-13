@@ -15,7 +15,14 @@ export default async function ThreadPage({
   const supabase = await createClient();
   const { data: replies, error: repliesError } = await supabase
     .from("replyToPost")
-    .select("*")
+    .select(`
+      *,
+      profile(
+        nickname,
+        icon
+      )
+    `)
+    .eq("isDeleted", false)
     .eq("originalPostId", id)
     .order("createdAt", { ascending: false })
     .limit(20);
@@ -29,10 +36,15 @@ export default async function ThreadPage({
     return <div>No data found</div>;
   }
 
-  // console.log("Fetched data from Supabase in ThreadPage:", replies);
   const { data: originalPost, error: originalPostError } = await supabase
     .from("post")
-    .select("*")
+    .select(`
+      *,
+      profile(
+        nickname,
+        icon
+      )
+    `)
     .eq("id", id)
     .single();
 
@@ -66,6 +78,10 @@ export default async function ThreadPage({
             postedBy: reply.postedBy,
             body: reply.body,
             isDeleted: reply.isDeleted,
+            profile: {
+              nickname: reply.profile?.nickname,
+              icon: reply.profile?.icon || -1,
+            },
           };
 
           return (
