@@ -19,20 +19,22 @@ const PostCard = ({ post }: PostCardProps) => {
       className="border border-gray-300 mt-4 px-4 py-2 "
     >
       <div className="flex justify-between items-start">
-        <div className="flex items-center">
-          <span>
-            <Image
-              src="/anonymous_user_icon.png"
-              alt="Icon"
-              width={40}
-              height={40}
-              className="rounded-full bg-gray-100"
-            />
-          </span>
-          <span className="ml-3 text-lg font-bold">
-            {post.profile?.nickname == null ? "[おなまえ]" : post.profile?.nickname}
-          </span>
-        </div>
+        <Link href={`/profile/${post.postedBy}`}>
+          <div className="flex items-center">
+            <span>
+              <Image
+                src="/anonymous_user_icon.png"
+                alt="Icon"
+                width={40}
+                height={40}
+                className="rounded-full bg-gray-100"
+              />
+            </span>
+            <span className="ml-3 text-lg font-bold">
+              {post.profile?.nickname == null ? "[おなまえ]" : post.profile?.nickname}
+            </span>
+          </div>
+        </Link>
         <span className="text-sm text-gray-500">
           {/* {new Date(post.createdAt).toLocaleString()} */}
           <LocalizedDate createdAt={post.createdAt} />
