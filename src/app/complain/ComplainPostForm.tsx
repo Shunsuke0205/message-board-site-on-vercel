@@ -1,13 +1,14 @@
 "use client"
 
 import { createClient } from "@/utils/supabase/client";
-import React, { useEffect, useState } from "react"
+import React, { /* useEffect, */ useState } from "react"
 
 
 const ComplainPostForm = () => {
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
 
+  /*
   useEffect(() => {
     const fetchUser = async () => {
       const supabase = createClient();
@@ -22,7 +23,7 @@ const ComplainPostForm = () => {
 
     fetchUser();
   }, []);
-
+  */
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
