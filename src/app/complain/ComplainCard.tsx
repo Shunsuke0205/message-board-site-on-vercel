@@ -10,22 +10,6 @@ type ComplainCardProps = {
 };
 
 const ComplainCard = ({ complain }: ComplainCardProps) => {
-  const repeatEmoji = (emoji: string, count: number) => {
-    if (count >= 1 && count <= 10) {
-      return (
-        <span>
-          {emoji.repeat(count)}
-        </span>
-      )
-    } else {
-      return (
-        <span>
-          {emoji} {count}
-        </span>
-      )
-    }
-  }
-
   return (
     <article
       key={complain.id}
@@ -56,9 +40,7 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
           {complain.body}
         </p>
         <div className="mt-2">
-          <span>{repeatEmoji("\u{1F622}", complain.tears)}</span>
-          <span>{repeatEmoji("\u{2764}", complain.good)}</span>
-          <span>{repeatEmoji("\u{1F4E3}", complain.cheer)}</span>
+          <ReactionButton complain={complain} />
         </div>
 
       </div>

@@ -8,7 +8,14 @@ const ComplainCardList = async () => {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("complain")
-    .select("*")
+    .select(`
+      *,
+      reactionToComplain(
+        tear,
+        heart,
+        cheer
+      )
+    `)
     .order("createdAt", { ascending: false })
     .limit(20);
 
@@ -25,17 +32,19 @@ const ComplainCardList = async () => {
   return (
     <div>
       {/* // Map through the fetched data and render ComplainCard for each item */}
-      {data.map((post: ComplainType) => {
-        const complain: ComplainType = {
+      {data.map((post) => {
+        const complain: ComplainProps = {
           id: post.id,
           createdAt: post.createdAt,
           name: post.name,
           body: post.body,
-          tears: post.tears,
-          good: post.good,
-          cheer: post.cheer,
           bad: post.bad,
           category: post.category,
+          reaction: {
+            tear: post.reactionToComplain?.tear || 1,
+            heart: post.reactionToComplain?.heart || 1,
+            cheer: post.reactionToComplain?.cheer || 1,
+          }
         }
         return (
           <ComplainCard
