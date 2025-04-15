@@ -57,7 +57,6 @@ export default function Home() {
       </h3>
       <ul>
         <li>見た目の調整</li>
-        <li>リアクションスタンプ</li>
         <li>非表示</li>
         <li>カテゴリー</li>
       </ul>
@@ -67,6 +66,7 @@ export default function Home() {
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
+        <li>Guchiのリアクションスタンプ</li>
         <li>自分以外の方のプロフィールページ</li>
         <li>登録したニックネームの表示</li>
         <li>ユーザのプロフィールページへのリンク</li>
