@@ -33,7 +33,7 @@ const ComplainPostForm = () => {
     }
 
     const supabase = createClient();
-    const { data, error } = await supabase
+    const { data: complainData, error: complainError } = await supabase
       .from("complain")
       .insert([{
         name: name,
@@ -42,11 +42,29 @@ const ComplainPostForm = () => {
         good: 1,
         cheer: 1,
         bad: 0,
-      }]);
-    if (error) {
-      console.error("Error inserting complain:", error);
+      }])
+      .select("*")
+      .single();
+
+    if (complainError) {
+      console.error("Error inserting complain:", complainError);
     } else {
-      // console.log("Complain inserted:", data);
+      // console.log("Complain inserted:", complainData);
+      if (!complainData) {
+        console.error("No complain data returned from Supabase");
+        return;
+      }
+      const { error: reactionError } = await supabase
+        .from("reactionToComplain")
+        .insert([{
+          id: complainData.id,
+          tear: 1,
+          heart: 1,
+          cheer: 1,
+        }])
+      if (reactionError) {
+        console.error("Error inserting reaction in ComplainPostForm:", reactionError);
+      }
       setBody(""); // actually this is not necessary
       window.location.reload();
     }
