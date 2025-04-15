@@ -46,7 +46,7 @@ const ComplainPostForm = () => {
     if (error) {
       console.error("Error inserting complain:", error);
     } else {
-      console.log("Complain inserted:", data);
+      // console.log("Complain inserted:", data);
       setBody(""); // actually this is not necessary
       window.location.reload();
     }
