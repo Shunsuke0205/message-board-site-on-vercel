@@ -19,7 +19,16 @@ export type ReplyProps = PostCommonProps & {
   originalPostId: string;
 };
 
-export type ComplainProps = PostCommonProps & {
+export type ComplainProps = {
+  id: string;
+  createdAt: string;
+  name: string;
+  body: string;
+  bad: number;
   category: number;
-};
-
+  reaction?: {
+    tear: number;
+    heart: number;
+    cheer: number;
+  };
+}

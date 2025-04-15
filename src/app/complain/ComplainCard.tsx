@@ -1,21 +1,12 @@
 import LocalizedDate from "@/component/LocalTime";
+import { ComplainProps } from "@/utils/postType";
 import Image from "next/image";
 import React from "react"
+import ReactionButton from "./ReactionButton";
 
-export type ComplainType = {
-  id: string;
-  createdAt: string;
-  name: string;
-  body: string;
-  tears: number;
-  good: number;
-  cheer: number;
-  bad: number;
-  category: number;
-};
 
 type ComplainCardProps = {
-  complain: ComplainType;
+  complain: ComplainProps;
 };
 
 const ComplainCard = ({ complain }: ComplainCardProps) => {
