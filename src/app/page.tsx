@@ -66,6 +66,7 @@ export default function Home() {
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
+        <li>アイコンの編集機能</li>
         <li>Guchiのリアクションスタンプ</li>
         <li>自分以外の方のプロフィールページ</li>
         <li>登録したニックネームの表示</li>
