@@ -6,6 +6,7 @@ import LocalizedDate from "@/component/LocalTime";
 import ReactionButton from "./ReactionButton";
 import DeleteButton from "./DeleteButton";
 import { PostProps } from "@/utils/postType";
+import { iconDictionary } from "../profile/edit/iconData";
 
 
 export type PostCardProps = {
@@ -13,6 +14,14 @@ export type PostCardProps = {
 };
 
 const PostCard = ({ post }: PostCardProps) => {
+  const iconNumber = post.profile?.icon;
+  let iconSrc = "/user_icon/anonymous_user_icon.png";
+  if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
+    if (iconDictionary[iconNumber]) {
+      iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
+    }
+  }
+  
   return (
     <article
       key={post.id}
@@ -23,7 +32,7 @@ const PostCard = ({ post }: PostCardProps) => {
           <div className="flex items-center">
             <span>
               <Image
-                src="/anonymous_user_icon.png"
+                src={iconSrc}
                 alt="Icon"
                 width={40}
                 height={40}
