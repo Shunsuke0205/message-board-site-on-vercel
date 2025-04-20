@@ -34,9 +34,10 @@ const PostCard = ({ post }: PostCardProps) => {
               <Image
                 src={iconSrc}
                 alt="Icon"
-                width={40}
-                height={40}
-                className="rounded-full bg-gray-100"
+                width={60}
+                height={60}
+                className="rounded-full 
+                  border-3 border-gray-300"
               />
             </span>
             <span className="ml-3 text-lg font-bold">
@@ -49,9 +50,9 @@ const PostCard = ({ post }: PostCardProps) => {
           <LocalizedDate createdAt={post.createdAt} />
         </span>
       </div>
-      <div className="sm:px-13 pb-2">
+      <div className="sm:px-8 pb-2">
         <Link href={`/posts/${post.id}`}>
-          <p className="whitespace-pre-wrap mt-6">
+          <p className="whitespace-pre-wrap mt-4">
             {post.body}
           </p>
         </Link>
