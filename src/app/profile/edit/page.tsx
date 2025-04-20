@@ -200,6 +200,17 @@ const EditPage = () => {
               </select> */}
             </label>
           </div>
+          <div>
+            <Link 
+              href={"/profile/edit/icon-preview"}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="text-sm text-gray-500">
+                アイコン一覧
+              </p>
+            </Link>
+          </div>
           <button
             type="submit"
             onClick={handleSubmit}
