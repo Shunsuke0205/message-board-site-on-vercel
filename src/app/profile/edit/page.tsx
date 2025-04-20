@@ -129,9 +129,9 @@ const EditPage = () => {
           <p>
             自己紹介：{userProfile?.selfIntro}
           </p>
-          <p>
+          {/* <p>
             アイコン： {(userProfile?.icon === -1) ? "未設定" : userProfile?.icon}
-          </p>
+          </p> */}
         </div>
         <h1 className="mt-4 text-lg">新しいプロフィール</h1>
         <form className="mt-2 px-4 py-2 border-2 border-gray-300 rounded-lg">
