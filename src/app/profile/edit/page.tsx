@@ -185,14 +185,14 @@ const EditPage = () => {
             </label>
           </div>
           <div>
-            <label htmlFor="icon"
-              className="text-gray-500">
-              すみません、アイコンの変更は後日実装予定です。&#x1f647;&#x1f3fb;&#x200d;&#x2640;&#xfe0f;
+            <label htmlFor="icon">
+              アイコン：
               <select
                 name="icon"
                 id="icon"
                 value={icon}
                 onChange={(e) => setIcon(parseInt(e.target.value))}
+                className="border-2 border-gray-300 rounded-lg"
               >
                 {iconDataList.map((icon) => (
                   <option 
@@ -211,7 +211,7 @@ const EditPage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <p className="text-sm text-gray-500">
+              <p className="text-blue-500 underline">
                 アイコン一覧
               </p>
             </Link>
