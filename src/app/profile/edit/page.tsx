@@ -1,7 +1,9 @@
 "use client"
 
 import { createClient } from "@/utils/supabase/client"
+import Link from "next/link";
 import React, { useEffect, useState } from "react"
+import { iconDataList } from "./iconData";
 
 type UserProfileProps = {
   nickname: string;
@@ -186,18 +188,21 @@ const EditPage = () => {
             <label htmlFor="icon"
               className="text-gray-500">
               すみません、アイコンの変更は後日実装予定です。&#x1f647;&#x1f3fb;&#x200d;&#x2640;&#xfe0f;
-              {/* <select
+              <select
                 name="icon"
                 id="icon"
                 value={icon}
                 onChange={(e) => setIcon(parseInt(e.target.value))}
               >
-                <option value="-1">未設定</option>
-                <option value="1">アイコン1</option>
-                <option value="2">アイコン2</option>
-                <option value="3">アイコン3</option>
-                <option value="4">アイコン4</option>
-              </select> */}
+                {iconDataList.map((icon) => (
+                  <option 
+                    key={icon.iconNumber} 
+                    value={icon.iconNumber}
+                  >
+                    {icon.iconName}
+                  </option>
+                ))}
+              </select>
             </label>
           </div>
           <div>
