@@ -2,6 +2,8 @@ import { createClient } from "@/utils/supabase/server";
 import { ProfileType } from "../profileType";
 import LogoutButton from "@/component/LogoutButton";
 import Link from "next/link";
+import { iconDictionary } from "../edit/iconData";
+import Image from "next/image";
 
 
 export default async function UserProfilePage({
@@ -73,13 +75,34 @@ export default async function UserProfilePage({
       <p>性別：{ sexInJapanese }</p>
     )
   }
+  const iconNumber = profile.icon;
+  let iconSrc = "/user_icon/anonymous_user_icon.png";
+  if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
+    if (iconDictionary[iconNumber]) {
+      iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
+    }
+  }
+ 
 
   return (
     <div>
       { userData.user.id === userId ? <LogoutButton /> : null }
       <div className="mt-3 px-4 py-2 border-2 border-gray-300 rounded-lg">
         { userData.user.id === userId ? <p>ログイン用のメールアドレス：{userData.user.email}</p> : null }
-        <p>おなまえ：{ profile.nickname ? profile.nickname : "未設定" }</p>
+        <div className="pt-4">
+          <Image
+            src={iconSrc}
+            alt="icon"
+            width={60}
+            height={60}
+            className="rounded-full 
+              border-3 border-gray-300"
+          />
+          <p>
+            アイコン：{(!iconDictionary[iconNumber]) ? "未設定" : iconDictionary[iconNumber].iconName}
+          </p>
+        </div>
+        <p>ニックネーム：{ profile.nickname ? profile.nickname : "未設定" }</p>
         <Sex sex={profile.sex} />
         <p>自己紹介文：{ profile.selfIntro ? profile.selfIntro : "未設定" }</p>
       </div>
