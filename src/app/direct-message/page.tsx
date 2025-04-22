@@ -1,6 +1,20 @@
+import { createClient } from "@/utils/supabase/server"
 import React from "react"
 
-const DM = () => {
+const DM = async () => {
+  const supabase = await createClient();
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData?.user) {
+    return (
+      <div>
+        <h1>DM</h1>
+        <p>右上のログインボタンを押してログインしてください。</p>
+      </div>
+    )
+  }
+
+
+
   return (
     <div>
       <h1>DM</h1>
