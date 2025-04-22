@@ -17,7 +17,7 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
     >
       <div className="flex justify-between items-start">
         <div className="flex items-center">
-          <span>
+          {/* <span>
             <Image
               src="/anonymous_user_icon.png"
               alt="Icon"
@@ -25,8 +25,8 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
               height={40}
               className="rounded-full bg-gray-100"
             />
-          </span>
-          <span className="ml-3 text-lg font-bold">
+          </span> */}
+          <span className="sm:px-13 text-lg font-bold">
             {complain.name}
           </span>
         </div>
