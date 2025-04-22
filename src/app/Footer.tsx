@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </Link>
         <Link
-          href="/direct-message"
+          href="/donation"
           className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
         >
           <div className="text-center">
@@ -75,7 +75,7 @@ const Footer = () => {
           </div>
         </Link>
         <Link
-          href="/direct-message"
+          href="/donation"
           className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
         >
           <div className="text-center">
