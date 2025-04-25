@@ -1,7 +1,7 @@
 import { createClient } from "@/utils/supabase/server"
 import React from "react"
 
-const DM = async () => {
+const DM_List = async () => {
   const supabase = await createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
   if (userError || !userData?.user) {
@@ -26,4 +26,4 @@ const DM = async () => {
   )
 }
 
-export default DM
+export default DM_List
