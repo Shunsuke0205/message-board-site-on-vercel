@@ -21,8 +21,9 @@ const DM_Button = ({ targetUserId, targetUserName }: DM_ButtonProps) => {
     const { data: existingChannel, error: existingChannelError } = await supabase
       .from("channel")
       .select("id")
-      .or(`and(user1.eq.${clientUserData.user.id}, user2.eq.${targetUserId}), 
-        and(user1.eq.${targetUserId}, user2.eq.${clientUserData.user.id})`)
+      .or(
+        `and(user1.eq.${clientUserData.user.id},user2.eq.${targetUserId}),and(user1.eq.${targetUserId},user2.eq.${clientUserData.user.id})`
+      )
       .single();
 
     let channelId: string;
