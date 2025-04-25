@@ -35,7 +35,7 @@ const ComplainCard = ({ complain }: ComplainCardProps) => {
         </span>
       </div>
       <div className="sm:px-13 pb-2">
-        <p className="whitespace-pre-wrap mt-4">
+        <p className="whitespace-pre-wrap mt-2">
           {complain.body}
         </p>
         <div className="mt-2">
