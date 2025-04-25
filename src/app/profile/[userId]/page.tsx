@@ -18,9 +18,11 @@ export default async function UserProfilePage({
     console.error("Error fetching user from Supabase in UserProfilePage:", userError);
     return <div>Error fetching user data</div>;
   }
-  if (userData.user.id !== userId) {
-    console.error("User ID mismatch in UserProfilePage");
-  }
+  
+
+  // if (userData.user.id !== userId) {
+  //   console.error("User ID mismatch in UserProfilePage");
+  // }
 
   let profile: ProfileType = {
     id: -1,
