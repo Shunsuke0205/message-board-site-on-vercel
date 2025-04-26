@@ -46,7 +46,8 @@ export default async function Page({
         const isClientFrom = (message.from === clientData.user.id);
         return (
           <div key={message.id}
-            className="p-3 border-2 rounded-lg"
+            className={`mt-2 px-3 py-2 border-2 border-gray-300 rounded-lg
+              ${isClientFrom ? "bg-lime-200" : "bg-pink-200"}`}
           >
             <div>
               {isClientFrom ? "自分" : "相手"}: {message.message}
