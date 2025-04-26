@@ -1,5 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
-import React from "react"
+import React, { Suspense } from "react"
 import MessageForm from "./MessageFrom";
 import { iconDictionary } from '@/app/profile/edit/iconData';
 import Image from 'next/image';
@@ -60,34 +60,37 @@ export default async function Page({
 
   return (
     <div>
-      <div className="flex items-center">
-        <Image
-          src={iconSrc}
-          alt="アイコン"
-          width={50}
-          height={50}
-          className="rounded-full mr-2"
-        />
-        <h1>{targetProfileData?.nickname ? targetProfileData.nickname : "ニックネーム未登録"}さん</h1>
-      </div>
-      <MessageForm channelId={channelId} targetId={targetId} />
-      {DMmessageData && DMmessageData.map((message) => {
-        const isClientFrom = (message.from === clientData.user.id);
-        return (
-          <div key={message.id}
-            className={`mt-2 px-3 py-2 border-2 border-gray-300 rounded-lg
-              ${isClientFrom ? "bg-lime-200" : "bg-pink-200"}`}
-          >
-            <div>
-              {isClientFrom ? "自分" : "相手"}: {message.message}
+      <Suspense fallback={<p>表示しています・・・</p>}>
+        <div className="flex items-center">
+          <Image
+            src={iconSrc}
+            alt="アイコン"
+            width={50}
+            height={50}
+            className="rounded-full mr-2"
+          />
+          <h1>{targetProfileData?.nickname ? targetProfileData.nickname : "ニックネーム未登録"}さん</h1>
+        </div>
+      </Suspense>
+      <Suspense fallback={<p>表示しています・・・</p>}>
+        <MessageForm channelId={channelId} targetId={targetId} />
+        {DMmessageData && DMmessageData.map((message) => {
+          const isClientFrom = (message.from === clientData.user.id);
+          return (
+            <div key={message.id}
+              className={`mt-2 px-3 py-2 border-2 border-gray-300 rounded-lg
+                ${isClientFrom ? "bg-lime-200" : "bg-pink-200"}`}
+            >
+              <div>
+                {isClientFrom ? "自分" : "相手"}: {message.message}
+              </div>
+              <div>
+                {new Date(message.created_at).toLocaleString()}
+              </div>
             </div>
-            <div>
-              {new Date(message.created_at).toLocaleString()}
-            </div>
-          </div>
-        )
-      })}
-
+          )
+        })}
+      </Suspense>
     </div>
   )
 }

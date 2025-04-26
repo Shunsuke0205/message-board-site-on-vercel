@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server"
 import Link from "next/link";
-import React from "react"
+import React, { Suspense } from "react"
 import { iconDictionary } from "../profile/edit/iconData";
 import Image from "next/image";
 
@@ -53,44 +53,47 @@ const DM_List = async () => {
       </p>
 
       <h1>DM一覧</h1>
-      {channelData && channelData.map((channel) => {
-        const targetProfile = (channel.user1 === userData.user.id) ? channel.user2Profile : channel.user1Profile;
-        const iconNumber = targetProfile?.icon;
-        let iconSrc = "/user_icon/anonymous_user_icon.png";
-        if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
-          if (iconDictionary[iconNumber]) {
-            iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
+
+      <Suspense fallback={<p>表示しています・・・</p>}>
+        {channelData && channelData.map((channel) => {
+          const targetProfile = (channel.user1 === userData.user.id) ? channel.user2Profile : channel.user1Profile;
+          const iconNumber = targetProfile?.icon;
+          let iconSrc = "/user_icon/anonymous_user_icon.png";
+          if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
+            if (iconDictionary[iconNumber]) {
+              iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
+            }
           }
-        }
- 
-        return (
-          <div key={channel.id} >
-            <Link href={`/direct-message/${channel.id}`}>
-              <div className="mb-4 px-2 py-2 border-3 border-gray-300 rounded-lg">
-              <div className="flex items-end flex-col">
-                {new Date(channel.last_update_at).toLocaleString()}
-              </div>
-              <div className="flex items-center">
-                <Image
-                  src={iconSrc}
-                  alt="Icon"
-                  width={60}
-                  height={60}
-                  className="
-                    rounded-full 
-                    border-3 border-gray-300"
-                />
-                
-                <span className="ml-4 font-bold">
-                  {targetProfile?.nickname ? targetProfile?.nickname : "ニックネーム未設定"}
-                </span>
-                <span>さん</span>
-              </div>
-              </div>
-            </Link>
-          </div>
-        )
-      })}
+   
+          return (
+            <div key={channel.id} >
+              <Link href={`/direct-message/${channel.id}`}>
+                <div className="mb-4 px-2 py-2 border-3 border-gray-300 rounded-lg">
+                <div className="flex items-end flex-col">
+                  {new Date(channel.last_update_at).toLocaleString()}
+                </div>
+                <div className="flex items-center">
+                  <Image
+                    src={iconSrc}
+                    alt="Icon"
+                    width={60}
+                    height={60}
+                    className="
+                      rounded-full 
+                      border-3 border-gray-300"
+                  />
+                  
+                  <span className="ml-4 font-bold">
+                    {targetProfile?.nickname ? targetProfile?.nickname : "ニックネーム未設定"}
+                  </span>
+                  <span>さん</span>
+                </div>
+                </div>
+              </Link>
+            </div>
+          )
+        })}
+      </Suspense>
     </div>
   )
 }
