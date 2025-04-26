@@ -34,17 +34,12 @@ export default function Home() {
       </p>
 
       <h2 className="mt-8 text-lg">予定している機能</h2>
-      <h3 className="mt-2">サイト全体について</h3>
-      <ul>
-        <li>見た目の調整</li>
-      </ul>
       <h3 className="mt-2">
         <Link href={"/posts"} className="underline">
           Posts
         </Link>
       </h3>
       <ul>
-        <li>見た目の調整</li>
         <li>カテゴリー</li>
         <li>リスペクトのお願い</li>
         <li>返信を受け付けるオンオフ機能</li>
@@ -56,16 +51,19 @@ export default function Home() {
         </Link>
       </h3>
       <ul>
-        <li>見た目の調整</li>
         <li>非表示</li>
         <li>カテゴリー</li>
       </ul>
-      <h3 className="mt-2">DM機能</h3>
       <h3 className="mt-2">寄付（お金のヘルプ）機能</h3>
       <h3 className="mt-2">不用品おゆずり機能</h3>
 
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
+        <li>
+          <Link href={"/direct-message"} className="underline">
+            DM機能！
+          </Link>
+        </li>
         <li>アイコンの編集機能</li>
         <li>Guchiのリアクションスタンプ</li>
         <li>自分以外の方のプロフィールページ</li>
