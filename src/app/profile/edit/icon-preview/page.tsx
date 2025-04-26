@@ -1,5 +1,6 @@
 import React from "react";
 import { iconDataList, IconData } from "../iconData";
+import Image from "next/image";
 
 const IconPreviewPage = () => {
   return (
@@ -22,11 +23,13 @@ const IconPreviewPage = () => {
       </p>
       <div className="mt-3 flex flex-wrap">
         {iconDataList.map((iconData: IconData) => (
-          <div key={iconData.iconNumber} className="mr-3 mt-2 w-1/5 p-2 border-2 border-gray-300 rounded-lg">
-            <img
+          <div key={iconData.iconNumber} className="mr-3 mt-2 w-1/5 p-2 border-2 border-gray-300 rounded-lg flex flex-col items-center">
+            <Image
               src={`/${iconData.Directory}/${iconData.fileName}`}
               alt={iconData.iconName}
               className="rounded-full bg-gray-100"
+              width={100}
+              height={100}
             />
             <p className="text-center mt-2">{iconData.iconName}</p>
           </div>
