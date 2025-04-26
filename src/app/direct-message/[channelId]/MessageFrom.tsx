@@ -64,6 +64,15 @@ const MessageForm = ({
         console.error("No post data returned from Supabase in MessageForm");
         return;
       }
+      const { data: channelData, error: channelError } = await supabase
+        .from("channel")
+        .update({ last_update_at: new Date().toISOString() })
+        .eq("id", channelId)
+        .single();
+      if (channelError) {
+        console.error("Error updating channel in MessageForm:", channelError);
+        return;
+      }
 
       setBody(""); // actually this is not necessary
       window.location.reload();
