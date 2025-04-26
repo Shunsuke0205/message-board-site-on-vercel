@@ -18,11 +18,14 @@ const Footer = () => {
           p-2
           overflow-x-auto"
       >
-        <Link
-          href="/posts"
-          className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
-        >
-          <div className="text-center">
+        <Link href="/posts">
+          <div 
+            className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 
+            w-20
+            bg-gray-100 
+            flex flex-col items-center 
+            rounded-lg"
+          >
             <Image
               src="/posts_icon.png"
               alt="Icon"
@@ -32,11 +35,14 @@ const Footer = () => {
             Posts
           </div>
         </Link>
-        <Link
-          href="/complain"
-          className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
-        >
-          <div className="text-center">
+        <Link href="/complain">
+          <div 
+            className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 
+            w-20
+            bg-gray-100 
+            flex flex-col items-center 
+            rounded-lg"
+          >
             <Image
               src="/galaxy_icon.png"
               alt="Icon"
@@ -46,11 +52,31 @@ const Footer = () => {
             Guchi
           </div>
         </Link>
-        <Link
-          href="/donation"
-          className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
-        >
-          <div className="text-center">
+        <Link href="/direct-message">
+          <div 
+            className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 
+            w-20
+            bg-gray-100 
+            flex flex-col items-center 
+            rounded-lg"
+          >
+            <Image
+              src="/dm_icon.png"
+              alt="Icon"
+              width={40}
+              height={40}
+            />
+            DM
+          </div>
+        </Link>
+        <Link href="/donation">
+          <div 
+            className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 
+            w-20
+            bg-gray-100 
+            flex flex-col items-center 
+            rounded-lg"
+          >
             <Image
               src="/donation_not_ready.png"
               alt="Icon"
@@ -60,35 +86,25 @@ const Footer = () => {
             寄付
           </div>
         </Link>
-        <Link
-          href="/direct-message"
-          className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
-        >
-          <div className="text-center">
-            <Image
-              src="/DM_not_ready.png"
-              alt="Icon"
-              width={40}
-              height={40}
-            />
-            DM
-          </div>
-        </Link>
-        <Link
-          href="/donation"
-          className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 bg-gray-100 items-center rounded-lg"
-        >
-          <div className="text-center">
+        <Link href="/donation">
+          <div 
+            className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 
+            w-20
+            bg-gray-100 
+            flex flex-col items-center 
+            rounded-lg"
+          >
             <Image
               src="/gift_not_ready.png"
               alt="Icon"
               width={40}
               height={40}
             />
-            おゆずり
+            <div>
+              <span className="text-sm">お譲り</span>
+            </div>
           </div>
         </Link>
-
       </div>
     </footer>
   )
