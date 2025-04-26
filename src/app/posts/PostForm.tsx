@@ -53,7 +53,7 @@ const PostForm = () => {
         console.error("No post data returned from Supabase in PostForm");
         return;
       }
-      const { data: reaction, error: reactionError } = await supabase
+      const { error: reactionError } = await supabase
         .from("reactionToPost")
         .insert([{
           id: postData.id,

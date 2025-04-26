@@ -54,10 +54,7 @@ const DM_List = async () => {
 
       <h1>DM一覧</h1>
       {channelData && channelData.map((channel) => {
-        const targetId = (channel.user1 === userData.user.id) ? channel.user2 : channel.user1;
         const targetProfile = (channel.user1 === userData.user.id) ? channel.user2Profile : channel.user1Profile;
-
-
         const iconNumber = targetProfile?.icon;
         let iconSrc = "/user_icon/anonymous_user_icon.png";
         if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
