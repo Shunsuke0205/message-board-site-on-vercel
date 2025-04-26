@@ -21,8 +21,8 @@ export async function login(formData: FormData) {
     redirect('/error')
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/')
+  revalidatePath('/posts', 'layout')
+  redirect('/posts')
 }
 
 export async function signup(formData: FormData) {
@@ -50,8 +50,8 @@ export async function signup(formData: FormData) {
     redirect('/error')
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/')
+  revalidatePath('/posts', 'layout')
+  redirect('/posts')
 }
 
 export async function logout() {
@@ -64,8 +64,8 @@ export async function logout() {
   }
   console.log("Successfully logged out");
 
-  revalidatePath('/', 'layout');
-  redirect('/');
+  revalidatePath('/posts', 'layout');
+  redirect('/posts');
 }
 
 export async function isLoggedIn() {
