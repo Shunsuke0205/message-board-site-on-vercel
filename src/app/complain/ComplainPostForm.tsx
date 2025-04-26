@@ -49,7 +49,6 @@ const ComplainPostForm = () => {
     if (complainError) {
       console.error("Error inserting complain:", complainError);
     } else {
-      // console.log("Complain inserted:", complainData);
       if (!complainData) {
         console.error("No complain data returned from Supabase");
         return;

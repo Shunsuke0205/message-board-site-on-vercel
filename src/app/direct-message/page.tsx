@@ -32,7 +32,6 @@ const DM_List = async () => {
     `)
     .or(`user1.eq.${userData.user.id},user2.eq.${userData.user.id}`)
     .order("last_update_at", { ascending: false });
-  console.log("channelData", channelData);
   if (channelError) {
     console.error("Error fetching channel data from Supabase in DM:", channelError);
   }

@@ -37,7 +37,6 @@ export default async function Page({
     console.error("Error fetching DM messages from Supabase in DM:", DMmessageError);
     // return <div>メッセージの取得に失敗しました。</div>;
   }
-  console.log("DMmessageData", DMmessageData);
 
   const targetId = channelData?.user1 === clientData.user.id ? channelData.user2 : channelData?.user1;
   const { data: targetProfileData, error: targetProfileError } = await supabase

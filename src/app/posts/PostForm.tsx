@@ -49,8 +49,6 @@ const PostForm = () => {
     if (error) {
       console.error("Error inserting post in PostForm:", error);
     } else {
-      console.log("Post inserted:", postData);
-      console.log("Post ID:", postData.id);
       if (!postData) {
         console.error("No post data returned from Supabase in PostForm");
         return;
@@ -63,8 +61,6 @@ const PostForm = () => {
         }])
       if (reactionError) {
         console.error("Error inserting reaction in PostForm:", reactionError);
-      } else {
-        console.log("Reaction inserted:", reaction);
       }
       setBody(""); // actually this is not necessary
       window.location.reload();

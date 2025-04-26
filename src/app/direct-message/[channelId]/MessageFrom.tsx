@@ -58,8 +58,6 @@ const MessageForm = ({
     if (messageError) {
       console.error("Error inserting post in MessageForm:", messageError);
     } else {
-      console.log("Post inserted:", messageData);
-      console.log("Post ID:", messageData.id);
       if (!messageData) {
         console.error("No post data returned from Supabase in MessageForm");
         return;
