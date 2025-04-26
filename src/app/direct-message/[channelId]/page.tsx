@@ -1,6 +1,8 @@
 import { createClient } from '@/utils/supabase/server';
 import React from "react"
 import MessageForm from "./MessageFrom";
+import { iconDictionary } from '@/app/profile/edit/iconData';
+import Image from 'next/image';
 
 export default async function Page({
   params,
@@ -38,9 +40,37 @@ export default async function Page({
   console.log("DMmessageData", DMmessageData);
 
   const targetId = channelData?.user1 === clientData.user.id ? channelData.user2 : channelData?.user1;
+  const { data: targetProfileData, error: targetProfileError } = await supabase
+    .from("profile")
+    .select("nickname, icon")
+    .eq("userId", targetId)
+    .single();
+
+  if (targetProfileError || !targetProfileData) {
+    console.error("Error fetching target profile data from Supabase in DM:", targetProfileError);
+  }
+
+  const iconNumber = targetProfileData?.icon;
+  let iconSrc = "/user_icon/anonymous_user_icon.png";
+  if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
+    if (iconDictionary[iconNumber]) {
+      iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
+    }
+  }
+ 
 
   return (
     <div>
+      <div className="flex items-center">
+        <Image
+          src={iconSrc}
+          alt="アイコン"
+          width={50}
+          height={50}
+          className="rounded-full mr-2"
+        />
+        <h1>{targetProfileData?.nickname ? targetProfileData.nickname : "ニックネーム未登録"}さん</h1>
+      </div>
       <MessageForm channelId={channelId} targetId={targetId} />
       {DMmessageData && DMmessageData.map((message) => {
         const isClientFrom = (message.from === clientData.user.id);
