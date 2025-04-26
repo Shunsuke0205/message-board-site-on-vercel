@@ -4,6 +4,7 @@ import LogoutButton from "@/component/LogoutButton";
 import Link from "next/link";
 import { iconDictionary } from "../edit/iconData";
 import Image from "next/image";
+import DM_Button from "./DM_Button";
 
 
 export default async function UserProfilePage({
@@ -14,13 +15,16 @@ export default async function UserProfilePage({
   const { userId } = await params;
   const supabase = await createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
+
   if (userError || !userData?.user) {
     console.error("Error fetching user from Supabase in UserProfilePage:", userError);
     return <div>Error fetching user data</div>;
   }
-  if (userData.user.id !== userId) {
-    console.error("User ID mismatch in UserProfilePage");
-  }
+  
+
+  // if (userData.user.id !== userId) {
+  //   console.error("User ID mismatch in UserProfilePage");
+  // }
 
   let profile: ProfileType = {
     id: -1,
@@ -88,7 +92,11 @@ export default async function UserProfilePage({
     <div>
       { userData.user.id === userId ? <LogoutButton /> : null }
       <div className="mt-3 px-4 py-2 border-2 border-gray-300 rounded-lg">
-        { userData.user.id === userId ? <p>ログイン用のメールアドレス：{userData.user.email}</p> : null }
+        { userData.user.id === userId ?
+          <p>ログイン用のメールアドレス：{userData.user.email}</p>
+          :
+          <DM_Button targetUserId={userId} targetUserName={profile.nickname} />
+        }
         <div className="pt-4">
           <Image
             src={iconSrc}
