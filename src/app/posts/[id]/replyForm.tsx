@@ -34,20 +34,30 @@ const ReplyForm = ({ postId }: { postId: string }) => {
     }
 
     const supabase = createClient();
-    const { data, error } = await supabase
+    const { data: replyData, error: replyError } = await supabase
       .from("replyToPost")
       .insert([{
         originalPostId: postId,
         postedBy: userId,
         body: body,
-        like: 1,
         isDeleted: false,
       }])
+      .select("id")
+      .single();
 
-    if (error) {
-      console.error("Error inserting reply in ReplyForm:", error);
+    if (replyError) {
+      console.error("Error inserting reply in ReplyForm:", replyError);
     } else {
-      console.log("Reply inserted:", data);
+      console.log("Reply inserted:", replyData);
+      const { error: reactionError } = await supabase
+        .from("reaction_to_reply")
+        .insert([{
+          id: replyData.id,
+          like: 1,
+        }])
+      if (reactionError) {
+        console.error("Error inserting reaction in ReplyForm:", reactionError);
+      }
       setBody(""); // actually this is not necessary
       window.location.reload();
     }
