@@ -9,9 +9,12 @@ const PostCardList = async () => {
     .from("post")
     .select(`
       *,
-      profile(
+      profile:profile!post_postedBy_fkey1 (
         nickname,
         icon
+      ),
+      reactionToPost:reactionToPost!post_id_fkey (
+        like
       )
     `)
     .order("createdAt", { ascending: false })
@@ -26,6 +29,7 @@ const PostCardList = async () => {
     return <div>データの取得に失敗したか、データがありませんでした。</div>;
   }
 
+  // console.log("Fetched data:", data);
 
   return (
     <div>
@@ -42,6 +46,9 @@ const PostCardList = async () => {
             nickname: post.profile?.nickname,
             icon: post.profile?.icon || -1,
           },
+          reactionToPost: {
+            like: post.reactionToPost?.like || 1
+          }
         };
 
         if (postData.isDeleted) {

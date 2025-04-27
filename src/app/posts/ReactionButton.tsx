@@ -1,32 +1,14 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { PostCardProps } from "./PostCard";
 import { createClient } from "@/utils/supabase/client";
 
 const ReactionButton = ({ post }: PostCardProps) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(post.reactionToPost?.like);
 
   const supabase = createClient();
-
-  useEffect(() => {
-    const fetchLikeCount = async (postId: string) => {
-      const { data, error } = await supabase
-        .from("reactionToPost")
-        .select("like")
-        .eq("id", postId)
-        .single();
-
-      if (error) {
-        console.error("Error fetching like count:", error);
-        return;
-      }
-      setLikeCount(data.like);
-    };
-
-    fetchLikeCount(post.id);
-  }, [post.id, supabase]);
 
   const toggleLike = async () => {
     const newLikeCount = isLiked ? likeCount - 1 : likeCount + 1;

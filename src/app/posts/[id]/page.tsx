@@ -40,9 +40,12 @@ export default async function ThreadPage({
     .from("post")
     .select(`
       *,
-      profile(
+      profile (
         nickname,
         icon
+      ),
+      reactionToPost:reactionToPost!post_id_fkey (
+        like
       )
     `)
     .eq("id", id)

@@ -13,6 +13,9 @@ export type PostCommonProps = {
 export type PostProps = PostCommonProps & {
   category: number;
   isAcceptReply: boolean;
+  reactionToPost: {
+    like: number;
+  }
 };
 
 export type ReplyProps = PostCommonProps & {
