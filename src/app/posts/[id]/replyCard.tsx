@@ -1,6 +1,7 @@
 import Image from "next/image";
 import DeleteButton from "../DeleteButton";
 import { ReplyProps } from "@/utils/postType";
+import Link from "next/link";
 
 
 
@@ -16,20 +17,22 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
       className="border border-gray-300 mt-4 px-4 py-2 "
     >
       <div className="flex justify-between items-start">
-        <div className="flex items-center">
-          <span>
-            <Image
-              src="/user_icon/anonymous_user_icon.png"
-              alt="Icon"
-              width={40}
-              height={40}
-              className="rounded-full bg-gray-100"
-            />
-          </span>
-          <span className="ml-3 text-lg font-bold">
-            {reply.profile?.nickname == null ? "[おなまえ]" : reply.profile?.nickname}
-          </span>
-        </div>
+        <Link href={`/profile/${reply.postedBy}`}>
+          <div className="flex items-center">
+            <span>
+              <Image
+                src="/user_icon/anonymous_user_icon.png"
+                alt="Icon"
+                width={40}
+                height={40}
+                className="rounded-full bg-gray-100"
+              />
+            </span>
+            <span className="ml-3 text-lg font-bold">
+              {reply.profile?.nickname == null ? "[おなまえ]" : reply.profile?.nickname}
+            </span>
+          </div>
+        </Link>
         <span className="text-sm text-gray-500">
           {new Date(reply.createdAt).toLocaleString()}
         </span>
