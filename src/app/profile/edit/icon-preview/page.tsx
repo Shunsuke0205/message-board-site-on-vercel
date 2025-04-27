@@ -19,7 +19,7 @@ const IconPreviewPage = () => {
         」様のアイコンを使用させていただいております。
       </p>
       <p className="mt-2 text-sm text-gray-500">
-        データ容量の節約のため、アイコンの設定はアップロードではなく選択していただく形とさせていただきます。
+        データ容量の節約のため、アイコンの設定はアップロードではなく選択式とさせていただいております。
       </p>
       <div className="mt-3 flex flex-wrap">
         {iconDataList.map((iconData: IconData) => (
