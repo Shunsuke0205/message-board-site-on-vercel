@@ -1,6 +1,6 @@
 import React from "react";
-import { iconDataList, IconData } from "../iconData";
 import Image from "next/image";
+import { IconData, iconDataList } from "@/utils/iconManeger/iconData";
 
 const IconPreviewPage = () => {
   return (

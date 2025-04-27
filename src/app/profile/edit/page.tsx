@@ -1,9 +1,9 @@
 "use client"
 
+import { iconDataList } from "@/utils/iconManeger/iconData";
 import { createClient } from "@/utils/supabase/client"
 import Link from "next/link";
 import React, { useEffect, useState } from "react"
-import { iconDataList } from "./iconData";
 
 type UserProfileProps = {
   nickname: string;
