@@ -5,7 +5,7 @@ import ReplyCount from "./replyCount";
 import LocalizedDate from "@/component/LocalTime";
 import ReactionButton from "./ReactionButton";
 import DeleteButton from "./DeleteButton";
-import { PostProps } from "@/utils/postType";
+import { PostProps, ReactionToPostProps } from "@/utils/postType";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 
 
@@ -14,6 +14,10 @@ export type PostCardProps = {
 };
 
 const PostCard = ({ post }: PostCardProps) => {
+  const reaction : ReactionToPostProps = {
+    id: post.id,
+    like: post.reactionToPost.like,
+  }
   return (
     <article
       key={post.id}
@@ -49,7 +53,7 @@ const PostCard = ({ post }: PostCardProps) => {
           </p>
         </Link>
         <div className="mt-2">
-          <ReactionButton post={post} />
+          <ReactionButton reaction={reaction} />
         </div>
         <Link href={`/posts/${post.id}`}>
           <div>

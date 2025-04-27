@@ -1,12 +1,16 @@
 "use client"
 
 import React, { useState } from "react";
-import { PostCardProps } from "./PostCard";
 import { createClient } from "@/utils/supabase/client";
+import { ReactionToPostProps } from "@/utils/postType";
 
-const ReactionButton = ({ post }: PostCardProps) => {
+type ReactionButtonProps = {
+  reaction : ReactionToPostProps;
+}
+
+const ReactionButton = ({ reaction }: ReactionButtonProps) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(post.reactionToPost?.like);
+  const [likeCount, setLikeCount] = useState(reaction.like);
 
   const supabase = createClient();
 
@@ -15,7 +19,7 @@ const ReactionButton = ({ post }: PostCardProps) => {
     setLikeCount(newLikeCount);
     setIsLiked(!isLiked);
 
-    await updateLikeCountOnServer(post.id, newLikeCount);
+    await updateLikeCountOnServer(reaction.id, newLikeCount);
   };
 
   const updateLikeCountOnServer = async (postId: string, newLikeCount: number) => {
