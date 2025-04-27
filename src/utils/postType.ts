@@ -35,3 +35,8 @@ export type ComplainProps = {
     cheer: number;
   };
 }
+
+export type ReactionToPostProps = {
+  id: string;
+  like: number;
+}
