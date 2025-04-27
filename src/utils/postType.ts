@@ -20,7 +20,7 @@ export type PostProps = PostCommonProps & {
 
 export type ReplyProps = PostCommonProps & {
   originalPostId: string;
-  reactionToPost: {
+  reactionToreply: {
     like: number;
   }
 };
