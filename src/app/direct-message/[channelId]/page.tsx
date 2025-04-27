@@ -1,8 +1,8 @@
 import { createClient } from '@/utils/supabase/server';
 import React, { Suspense } from "react"
 import MessageForm from "./MessageFrom";
-import { iconDictionary } from '@/app/profile/edit/iconData';
 import Image from 'next/image';
+import iconNumberToSource from '@/utils/iconManeger/iconNumberToSource';
 
 export default async function Page({
   params,
@@ -49,13 +49,7 @@ export default async function Page({
     console.error("Error fetching target profile data from Supabase in DM:", targetProfileError);
   }
 
-  const iconNumber = targetProfileData?.icon;
-  let iconSrc = "/user_icon/anonymous_user_icon.png";
-  if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
-    if (iconDictionary[iconNumber]) {
-      iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
-    }
-  }
+
  
 
   return (
@@ -63,7 +57,7 @@ export default async function Page({
       <Suspense fallback={<p>表示しています・・・</p>}>
         <div className="flex items-center">
           <Image
-            src={iconSrc}
+            src={iconNumberToSource(targetProfileData?.icon)}
             alt="アイコン"
             width={50}
             height={50}

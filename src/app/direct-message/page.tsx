@@ -1,8 +1,8 @@
 import { createClient } from "@/utils/supabase/server"
 import Link from "next/link";
 import React, { Suspense } from "react"
-import { iconDictionary } from "../profile/edit/iconData";
 import Image from "next/image";
+import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 
 const DM_List = async () => {
   const supabase = await createClient();
@@ -57,13 +57,6 @@ const DM_List = async () => {
       <Suspense fallback={<p>表示しています・・・</p>}>
         {channelData && channelData.map((channel) => {
           const targetProfile = (channel.user1 === userData.user.id) ? channel.user2Profile : channel.user1Profile;
-          const iconNumber = targetProfile?.icon;
-          let iconSrc = "/user_icon/anonymous_user_icon.png";
-          if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
-            if (iconDictionary[iconNumber]) {
-              iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
-            }
-          }
    
           return (
             <div key={channel.id} >
@@ -74,7 +67,7 @@ const DM_List = async () => {
                 </div>
                 <div className="flex items-center">
                   <Image
-                    src={iconSrc}
+                    src={iconNumberToSource(targetProfile?.icon)}
                     alt="Icon"
                     width={60}
                     height={60}
