@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { Suspense } from "react"
 import Image from "next/image";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
+import LocalizedDate from "@/component/LocalTime";
 
 const DM_List = async () => {
   const supabase = await createClient();
@@ -63,7 +64,7 @@ const DM_List = async () => {
               <Link href={`/direct-message/${channel.id}`}>
                 <div className="mb-4 px-2 py-2 border-3 border-gray-300 rounded-lg">
                 <div className="flex items-end flex-col">
-                  {new Date(channel.last_update_at).toLocaleString()}
+                  <LocalizedDate createdAt={channel.last_update_at} />
                 </div>
                 <div className="flex items-center">
                   <Image
