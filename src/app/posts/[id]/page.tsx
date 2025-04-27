@@ -17,7 +17,7 @@ export default async function ThreadPage({
     .from("replyToPost")
     .select(`
       *,
-      profile(
+      profile (
         nickname,
         icon
       )
