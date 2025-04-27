@@ -19,11 +19,11 @@ const PostCardList = async () => {
 
   if (error) {
     console.error("Error fetching data from Supabase in PostCardList:", error);
-    return <div>Error fetching data</div>;
+    return <div>データの取得に失敗しました。</div>;
   }
   if (!data) {
     console.error("No data found in PostCardList");
-    return <div>No data found</div>;
+    return <div>データの取得に失敗したか、データがありませんでした。</div>;
   }
 
 
