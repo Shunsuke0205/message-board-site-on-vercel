@@ -4,6 +4,7 @@ import { ReactionToPostProps, ReplyProps } from "@/utils/postType";
 import Link from "next/link";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 import ReactionButtonOnReply from "./ReactionButtonOnReply";
+import LocalizedDate from "@/component/LocalTime";
 
 
 
@@ -40,7 +41,7 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
           </div>
         </Link>
         <span className="text-sm text-gray-500">
-          {new Date(reply.createdAt).toLocaleString()}
+          <LocalizedDate createdAt={reply.createdAt} />
         </span>
       </div>
       <div className="px-13 pb-2">
