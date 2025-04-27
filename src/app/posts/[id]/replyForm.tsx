@@ -48,7 +48,7 @@ const ReplyForm = ({ postId }: { postId: string }) => {
     if (replyError) {
       console.error("Error inserting reply in ReplyForm:", replyError);
     } else {
-      console.log("Reply inserted:", replyData);
+      // console.log("Reply inserted:", replyData);
       const { error: reactionError } = await supabase
         .from("reaction_to_reply")
         .insert([{
