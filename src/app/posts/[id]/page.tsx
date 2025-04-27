@@ -20,6 +20,9 @@ export default async function ThreadPage({
       profile (
         nickname,
         icon
+      ),
+      reaction:reaction_to_reply!replyToPost_id_fkey (
+        like
       )
     `)
     .eq("isDeleted", false)
@@ -85,6 +88,9 @@ export default async function ThreadPage({
               nickname: reply.profile?.nickname,
               icon: reply.profile?.icon || -1,
             },
+            reactionToReply: {
+              like: reply.reaction?.like
+            }
           };
 
           return (
