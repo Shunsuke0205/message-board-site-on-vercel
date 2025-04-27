@@ -1,8 +1,9 @@
 import Image from "next/image";
 import DeleteButton from "../DeleteButton";
-import { ReplyProps } from "@/utils/postType";
+import { ReactionToPostProps, ReplyProps } from "@/utils/postType";
 import Link from "next/link";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
+import ReactionButtonOnReply from "./ReactionButtonOnReply";
 
 
 
@@ -12,6 +13,10 @@ export type ReplyCardProps = {
 };
 
 const ReplyCard = ({ reply } : ReplyCardProps) => {
+  const reaction : ReactionToPostProps = {
+    id: reply.id,
+    like: reply.reactionToReply.like,
+  }
   return (
     <article
       key={reply.id}
@@ -43,9 +48,7 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
           {reply.body}
         </p>
         <div className="mt-2">
-          {/* <span>
-            {repeatEmoji("\u{2764}", reply.like)}
-          </span> */}
+          <ReactionButtonOnReply reaction={reaction} />
         </div>
         <DeleteButton post={reply} tableName="replyToPost" />
       </div>
