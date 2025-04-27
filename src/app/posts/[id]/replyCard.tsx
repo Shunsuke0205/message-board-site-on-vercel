@@ -19,7 +19,7 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
         <div className="flex items-center">
           <span>
             <Image
-              src="/anonymous_user_icon.png"
+              src="/user_icon/anonymous_user_icon.png"
               alt="Icon"
               width={40}
               height={40}
