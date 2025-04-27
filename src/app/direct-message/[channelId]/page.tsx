@@ -3,6 +3,7 @@ import React, { Suspense } from "react"
 import MessageForm from "./MessageFrom";
 import Image from "next/image";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
+import LocalizedDate from "@/component/LocalTime";
 
 export default async function Page({
   params,
@@ -79,7 +80,7 @@ export default async function Page({
                 {message.message}
               </p>
               <div>
-                {new Date(message.created_at).toLocaleString()}
+                <LocalizedDate createdAt={message.created_at} />
               </div>
             </div>
           )
