@@ -2,9 +2,10 @@ import { createClient } from "@/utils/supabase/server";
 import { ProfileType } from "../profileType";
 import LogoutButton from "@/component/LogoutButton";
 import Link from "next/link";
-import { iconDictionary } from "../edit/iconData";
 import Image from "next/image";
 import DM_Button from "./DM_Button";
+import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
+import { iconDictionary } from "@/utils/iconManeger/iconData";
 
 
 export default async function UserProfilePage({
@@ -79,13 +80,7 @@ export default async function UserProfilePage({
       <p>性別：{ sexInJapanese }</p>
     )
   }
-  const iconNumber = profile.icon;
-  let iconSrc = "/user_icon/anonymous_user_icon.png";
-  if (iconNumber !== undefined && iconNumber !== null && iconNumber >= 0) {
-    if (iconDictionary[iconNumber]) {
-      iconSrc = `/${iconDictionary[iconNumber].Directory}/${iconDictionary[iconNumber].fileName}`;
-    }
-  }
+
  
 
   return (
@@ -99,7 +94,7 @@ export default async function UserProfilePage({
         }
         <div className="pt-4">
           <Image
-            src={iconSrc}
+            src={iconNumberToSource(profile.icon)}
             alt="icon"
             width={60}
             height={60}
@@ -107,7 +102,7 @@ export default async function UserProfilePage({
               border-3 border-gray-300"
           />
           <p>
-            アイコン：{(!iconDictionary[iconNumber]) ? "未設定" : iconDictionary[iconNumber].iconName}
+            アイコン：{(!iconDictionary[profile.icon]) ? "未設定" : iconDictionary[profile.icon].iconName}
           </p>
         </div>
         <p>ニックネーム：{ profile.nickname ? profile.nickname : "未設定" }</p>
