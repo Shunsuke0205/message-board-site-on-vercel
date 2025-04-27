@@ -42,7 +42,6 @@ const PostCard = ({ post }: PostCardProps) => {
           </div>
         </Link>
         <span className="text-sm text-gray-500">
-          {/* {new Date(post.createdAt).toLocaleString()} */}
           <LocalizedDate createdAt={post.createdAt} />
         </span>
       </div>
