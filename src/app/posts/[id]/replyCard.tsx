@@ -2,6 +2,7 @@ import Image from "next/image";
 import DeleteButton from "../DeleteButton";
 import { ReplyProps } from "@/utils/postType";
 import Link from "next/link";
+import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 
 
 
@@ -21,7 +22,7 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
           <div className="flex items-center">
             <span>
               <Image
-                src="/user_icon/anonymous_user_icon.png"
+                src={iconNumberToSource(reply.profile?.icon)}
                 alt="Icon"
                 width={40}
                 height={40}
