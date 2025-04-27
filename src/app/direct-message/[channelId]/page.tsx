@@ -1,8 +1,8 @@
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from "@/utils/supabase/server";
 import React, { Suspense } from "react"
 import MessageForm from "./MessageFrom";
-import Image from 'next/image';
-import iconNumberToSource from '@/utils/iconManeger/iconNumberToSource';
+import Image from "next/image";
+import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 
 export default async function Page({
   params,
@@ -75,9 +75,9 @@ export default async function Page({
               className={`mt-2 px-3 py-2 border-2 border-gray-300 rounded-lg
                 ${isClientFrom ? "bg-lime-200" : "bg-pink-200"}`}
             >
-              <div>
-                {isClientFrom ? "自分" : "相手"}: {message.message}
-              </div>
+              <p className="whitespace-pre-wrap">
+                {message.message}
+              </p>
               <div>
                 {new Date(message.created_at).toLocaleString()}
               </div>
