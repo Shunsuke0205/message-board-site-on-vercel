@@ -86,7 +86,7 @@ const Footer = () => {
             寄付
           </div>
         </Link>
-        <Link href="/donation">
+        <Link href="/second-hand">
           <div 
             className="mt-1 ml-2 pt-2 pb-2 pl-4 pr-4 
             w-20
