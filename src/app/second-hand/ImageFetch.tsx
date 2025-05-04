@@ -26,31 +26,20 @@ const ImageFetch = async () => {
   }
 
 
-  console.log("imageData", imageData);
   const imageUrl = await supabase.storage
     .from("item")
-    .createSignedUrl(imageData[0].name, 60 * 60 * 24, {
-      transform: {
-        width: 500,
-        height: 500,
-      }
-    });
-  console.log("imageUrl", imageUrl);
-  console.log("imageUrl.data.publicUrl", imageUrl.data?.signedUrl);
+    .createSignedUrl(imageData[0].name, 60 * 60 * 24);
+
+
+
   return (
     <div>
       <Image
         src={imageUrl.data.signedUrl}
         alt="Fetched Image"
-        width={500}
-        height={500}
+        width={300}
+        height={300}
       />
-      {/* <img
-        src={imageUrl.data?.signedUrl}
-        alt="Fetched Image"
-        width={500}
-        height={500}
-      /> */}
     </div>
   )
 }
