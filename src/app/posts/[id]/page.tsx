@@ -21,7 +21,7 @@ export default async function ThreadPage({
         nickname,
         icon
       ),
-      reaction:reaction_to_reply!replyToPost_id_fkey (
+      reaction:reaction_to_reply (
         like
       )
     `)
