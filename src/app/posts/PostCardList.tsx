@@ -9,11 +9,11 @@ const PostCardList = async () => {
     .from("post")
     .select(`
       *,
-      profile:profile!post_postedBy_fkey1 (
+      profile:profile (
         nickname,
         icon
       ),
-      reactionToPost:reactionToPost!post_id_fkey (
+      reactionToPost:reactionToPost (
         like
       )
     `)
