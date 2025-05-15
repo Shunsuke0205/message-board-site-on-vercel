@@ -16,7 +16,7 @@ const ImageFetch = async () => {
       </div>
     );
   }
-  if (!imageData) {
+  if (!imageData || imageData.length === 0) {
     console.error("No image data found in ImageFetch");
     return (
       <div>
