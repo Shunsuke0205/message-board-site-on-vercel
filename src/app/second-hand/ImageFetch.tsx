@@ -1,5 +1,6 @@
 import { createClient } from "@/utils/supabase/server"
 import Image from "next/image";
+import Link from "next/link";
 import React from "react"
 
 const ImageFetch = async () => {
@@ -41,12 +42,14 @@ const ImageFetch = async () => {
 
   return (
     <div>
-      <Image
-        src={signedUrlData.signedUrl}
-        alt="Fetched Image"
-        width={300}
-        height={300}
-      />
+      <Link href={signedUrlData.signedUrl} target="_blank" rel="noopener noreferrer">
+        <Image
+          src={signedUrlData.signedUrl}
+          alt="Fetched Image"
+          width={300}
+          height={300}
+        />
+      </Link>
     </div>
   )
 }
