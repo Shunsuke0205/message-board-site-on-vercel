@@ -1,6 +1,7 @@
 import React, { Suspense } from "react"
 import ImageFetch from "./ImageFetch"
 import { createClient } from "@/utils/supabase/server"
+import ImageUploader from "./ImageUploader";
 
 const SecondHandPostList = async () => {
   const supabase = await createClient();
@@ -22,6 +23,7 @@ const SecondHandPage = () => {
   return (
     <div>
       SecondHandPage
+      <ImageUploader />
       <ImageFetch />
       <Suspense fallback={<div>表示しています・・・</div>}>
         <SecondHandPostList />
