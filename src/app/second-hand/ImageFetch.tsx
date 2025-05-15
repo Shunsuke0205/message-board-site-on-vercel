@@ -26,16 +26,23 @@ const ImageFetch = async () => {
   }
 
 
-  const imageUrl = await supabase.storage
+  const { data: signedUrlData, error: signedUrlError } = await supabase.storage
     .from("item")
     .createSignedUrl(imageData[0].name, 60 * 60 * 24);
 
-
+  if (signedUrlError) {
+    console.error("Error creating signed URL in ImageFetch:", signedUrlError);
+    return (
+      <div>
+        画像のURL取得に失敗しました。
+      </div>
+    );
+  }
 
   return (
     <div>
       <Image
-        src={imageUrl.data.signedUrl}
+        src={signedUrlData.signedUrl}
         alt="Fetched Image"
         width={300}
         height={300}
