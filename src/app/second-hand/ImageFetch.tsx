@@ -26,30 +26,46 @@ const ImageFetch = async () => {
     );
   }
 
+  const signedUrls = await Promise.all(
+    imageData.map(async (file) => {
+      const { data, error } = await supabase.storage
+        .from("item")
+        .createSignedUrl(file.name, 60 * 60 * 24); // 24時間有効
 
-  const { data: signedUrlData, error: signedUrlError } = await supabase.storage
-    .from("item")
-    .createSignedUrl(imageData[0].name, 60 * 60 * 24);
+      if (error || !data) {
+        console.error(`URL生成失敗: ${file.name}`, error);
+        return null;
+      }
 
-  if (signedUrlError) {
-    console.error("Error creating signed URL in ImageFetch:", signedUrlError);
-    return (
-      <div>
-        画像のURL取得に失敗しました。
-      </div>
-    );
-  }
+      return { name: file.name, url: data.signedUrl };
+    })
+  );
+
+  // console.log("signedUrls", signedUrls);
+
+  const validImages = signedUrls.filter((image) => image !== null)
+
+  // console.log("validImages", validImages);
+
 
   return (
-    <div>
-      <Link href={signedUrlData.signedUrl} target="_blank" rel="noopener noreferrer">
-        <Image
-          src={signedUrlData.signedUrl}
-          alt="Fetched Image"
-          width={300}
-          height={300}
-        />
-      </Link>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {validImages.map((image) => (
+        <Link
+          key={image!.name}
+          href={image!.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src={image!.url}
+            alt={image!.name}
+            width={300}
+            height={300}
+            className="rounded shadow"
+          />
+        </Link>
+      ))}
     </div>
   )
 }
