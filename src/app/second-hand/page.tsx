@@ -63,7 +63,7 @@ const SecondHandPage = () => {
   return (
     <div>
       <p>SecondHandPage</p>
-      <Link href="/second-hand/post">
+      <Link href="/second-hand/upload">
         不用品を投稿する
       </Link>
       <ImageUploader />
