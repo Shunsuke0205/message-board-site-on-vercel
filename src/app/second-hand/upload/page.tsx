@@ -1,16 +1,15 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
-import ImageUploader from "../ImageUploader";
 import { createClient } from "@/utils/supabase/client";
 
 const SecondHandPostForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [isFreeShipping, setIsFreeShipping] = useState(true);
-  const [imagePaths, setImagePaths] = useState<string[]>([]);
   const [message, setMessage] = useState('');
   const [userId, setUserId] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -37,9 +36,33 @@ const SecondHandPostForm = () => {
       return;
     }
 
+     if (!title) {
+      setMessage("タイトルを入力してください。");
+      return;
+    }
+
+
+    if (!file) {
+      setMessage("画像を選択してください。");
+      return;
+    }
+
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const { error: uploadError } = await supabase.storage
+      .from("item")
+      .upload(fileName, file);
+
+    if (uploadError) {
+      console.error("画像アップロードエラー:", uploadError.message);
+      setMessage("画像のアップロードに失敗しました。");
+      return;
+    }
+
     const { data: itemData, error: itemError } = await supabase
       .from("second_hand_item")
       .insert([{
+        posted_by: userId,
         title,
         description,
         is_free_shipping: isFreeShipping,
@@ -50,25 +73,29 @@ const SecondHandPostForm = () => {
       .single();
 
     if (itemError) {
-      setMessage(`投稿に失敗しました: ${itemError.message}`);
+      setMessage(`投稿に失敗しました: ${itemError.message}\nもしこのエラーが続く場合は、開発者にご連絡いただけますと幸いです。`);
       return;
     }
 
-    const uploadImageResults = await Promise.all(
-      imagePaths.map(async (path) => {
-        const { error: imgError } = await supabase
-          .from("item_image")
-          .insert({
-            item_id: itemData.id,
-            storage_path: path,
-            is_deleted: false
-          });
+    const { error: imageError } = await supabase
+      .from("item_image")
+      .insert([{
+        item_id: itemData.id,
+        storage_path: fileName,
+        is_deleted: false
+      }]);
 
-        return imgError ? `画像登録エラー：${imgError.message}` : `${path}`;
-      })
-    );
+    if (imageError) {
+      console.error("画像登録エラー:", imageError.message);
+      setMessage("画像情報の保存に失敗しました。");
+      return;
+    }
 
-    setMessage(`投稿完了！\n${uploadImageResults.join('\n')}`);
+    setMessage("🎉 投稿が完了しました！");
+    setTitle("");
+    setDescription("");
+    setIsFreeShipping(true);
+    setFile(null);
   };
 
   return (
@@ -106,6 +133,19 @@ const SecondHandPostForm = () => {
         </label>
       </div>
 
+      <div className="mb-4">
+        <label className="block font-medium mb-1">画像（1枚・必須）</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            if (e.target.files && e.target.files[0]) {
+              setFile(e.target.files[0]);
+            }
+          }}
+          className="border rounded p-2"
+        />
+      </div>
 
       <div className="mt-6">
         <button
