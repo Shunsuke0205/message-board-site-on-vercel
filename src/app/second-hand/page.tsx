@@ -11,10 +11,12 @@ const SecondHandPostList = async () => {
     .from("second_hand_item")
     .select(`
       *,
-      item_image (
+      itemImage:item_image (
         id,
         item_id,
-        storage_path
+        storage_path,
+        is_deleted,
+        posted_by
       )
     `)
     .eq("is_deleted", false)
