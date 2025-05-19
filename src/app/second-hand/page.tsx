@@ -3,59 +3,90 @@ import ImageFetch from "./ImageFetch"
 import { createClient } from "@/utils/supabase/server"
 import ImageUploader from "./ImageUploader";
 import Link from "next/link";
-import LocalizedDate from "@/component/LocalTime";
+import Image from "next/image";
 
 const SecondHandPostList = async () => {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  const { data: itemData, error: itemError } = await supabase
     .from("second_hand_item")
     .select(`
       *,
-      itemImage:item_image (
-        id,
-        item_id,
-        storage_path,
-        is_deleted,
-        posted_by
+      itemImage: item_image (
+        itemId: item_id,
+        storagePath: storage_path,
+        isDeleted: is_deleted,
+        postedBy: posted_by
       )
     `)
     .eq("is_deleted", false)
     .order("last_update_at", { ascending: false })
     .limit(20);
 
-  console.log("SecondHandPostList data", data);
 
-  if (error) {
+  if (itemError) {
     return <div className="text-red-500">データの取得に失敗しました。</div>;
   }
 
-  if (!data || data.length === 0) {
+  if (!itemData || itemData.length === 0) {
     return <div>現在、投稿はありません。</div>;
   }
+  
+  const paths = itemData.map((item) => item.itemImage?.[0]?.storagePath);
+  const { data: urlData, error: urlError } = await supabase.storage
+    .from("item")
+    .createSignedUrls(paths.filter(Boolean) as string[], 60 * 60 * 24); // 24時間有効
+
+  if (urlError) {
+    console.error("Error fetching signed URLs in SecondHandPostList:", urlError);
+    return <div className="text-red-500">画像の取得に失敗しました。</div>;
+  }
+  const itemsWithUrl = itemData.map((item, index) => {
+    const url = urlData?.[index]?.signedUrl;
+    return {
+      ...item,
+      itemImage: item.itemImage.map((img) => ({
+        ...img,
+        signedUrl: url,
+      })),
+    };
+  });
+  // console.log("itemsWithUrl", itemsWithUrl);
+
+
+
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-      {data.map((item) => (
-        <Link href={`/second-hand/${item.id}`} key={item.id}>
+      {itemsWithUrl.map((item) => {
+        return (
+          <Link href={`/second-hand/${item.id}`} key={item.id}>
+            <div className="relative w-full aspect-square bg-white shadow-md rounded overflow-hidden hover:shadow-lg transition">
+              {/* サムネイル画像 */}
+              <Image
+                src={item.itemImage?.[0]?.signedUrl}
+                alt={item.title || 'No Title'}
+                width={300}
+                height={300}
+                className="w-full h-full object-cover"
+              />
 
-          <div
-            key={item.id}
-            className="bg-white shadow-md rounded-lg p-4 border border-gray-200 hover:shadow-lg transition"
-          >
-            <h2 className="text-lg font-semibold text-gray-800 mb-2">{item.title || "タイトル未設定"}</h2>
-            <p className="text-gray-600 text-sm mb-3 line-clamp-3">{item.description || "説明なし"}</p>
-            <div className="text-sm text-gray-500">
-              <span className="font-medium">
-                {item.is_free_shipping ? "送料無料" : "着払い"}
-              </span>
+              {/* 終了ラベル（is_openがfalseの場合）*/}
+              {!item.is_open && (
+                <div className="absolute top-0 left-0 w-0 h-0 border-t-[100px] border-r-[100px] border-t-red-600 border-r-transparent">
+                  <span className="absolute top-[-45px] left-[2px] text-white font-bold rotate-[-45deg] origin-top-left">
+                    CLOSED
+                  </span>
+                </div>
+              )}
+
+              {/* タイトル */}
+              <div className="absolute bottom-0 bg-white bg-opacity-80 w-full px-2 py-2 text-sm font-medium text-gray-800 truncate">
+                {item.title || 'タイトル未設定'}
+              </div>
             </div>
-            <div className="mt-2 text-xs text-gray-400">
-              <LocalizedDate createdAt={item.last_update_at} />
-            </div>
-            {item.item_image && item.item_image.length > 0}
-          </div>
-        </Link>
-      ))}
+          </Link>
+        );
+      })}
     </div>
   );
 }
@@ -68,8 +99,8 @@ const SecondHandPage = () => {
       <Link href="/second-hand/upload">
         不用品を投稿する
       </Link>
-      <ImageUploader />
-      <ImageFetch />
+      {/* <ImageUploader /> */}
+      {/* <ImageFetch /> */}
       <Suspense fallback={<div>表示しています・・・</div>}>
         <SecondHandPostList />
       </Suspense>
