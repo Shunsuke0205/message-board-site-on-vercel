@@ -77,7 +77,7 @@ const SecondHandPostList = async () => {
 
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-6">
       {itemsWithUrl.map((item) => {
         let imageUrl = "/closed_item.png";
         if (item.itemImage && item.itemImage.length > 0 && item.itemImage[0].signedUrl) {
@@ -85,29 +85,31 @@ const SecondHandPostList = async () => {
         }
         return (
           <Link href={`/second-hand/${item.id}`} key={item.id}>
-            <div className="relative w-full aspect-square bg-white shadow-md rounded overflow-hidden hover:shadow-lg transition">
+            <div className="relative w-full aspect-square bg-gray-200 rounded overflow-hidden hover:shadow-lg transition">
               {/* サムネイル画像 */}
               <Image
                 src={imageUrl}
                 alt={item.title || 'No Title'}
                 width={300}
                 height={300}
-                className="w-full h-full object-cover"
+                className="w-auto h-full max-h-full max-w-full object-contain mx-auto my-auto"
               />
 
               {/* 終了ラベル（is_openがfalseの場合）*/}
               {!item.is_open && (
                 <div className="absolute top-0 left-0 w-0 h-0 border-t-[100px] border-r-[100px] border-t-red-600 border-r-transparent">
-                  <span className="absolute top-[-45px] left-[2px] text-white font-bold rotate-[-45deg] origin-top-left">
+                  <span className="absolute top-[-51px] left-[8px] text-white font-bold rotate-[-45deg] origin-top-left">
                     CLOSED
                   </span>
                 </div>
               )}
 
-              {/* タイトル */}
-              <div className="absolute bottom-0 bg-white bg-opacity-80 w-full px-2 py-2 text-sm font-medium text-gray-800 truncate">
-                {item.title || 'タイトル未設定'}
-              </div>
+            </div>
+            {/* タイトル */}
+            <div 
+              className="pt-1 bg-white w-full  font-medium text-gray-800 truncate"
+            >
+              {item.title || 'タイトル未設定'}
             </div>
           </Link>
         );
@@ -120,9 +122,10 @@ const SecondHandPostList = async () => {
 const SecondHandPage = () => {
   return (
     <div>
-      <p>SecondHandPage</p>
       <Link href="/second-hand/upload">
-        不用品を投稿する
+        <div className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition duration-300">
+          不用品を投稿する
+        </div>
       </Link>
       <Suspense fallback={<div>表示しています・・・</div>}>
         <SecondHandPostList />
