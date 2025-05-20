@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react"
 
-const page = () => {
+export default async function SecondHandItem({
+  params,
+} : {
+  params: Promise<{ itemId: string }>
+}) {
+  const { itemId } = await params;
+
   return (
-    <div>page</div>
+    <div>
+      {itemId}
+    </div>
   )
-}
-
-export default page
+};
