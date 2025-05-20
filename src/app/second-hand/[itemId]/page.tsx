@@ -35,7 +35,12 @@ export default async function SecondHandItem({
   const { data: itemData, error: itemError } = await supabase
     .from("second_hand_item")
     .select(`
-      *,
+      id,
+      title,
+      description,
+      isOpen: is_open,
+      isDeleted: is_deleted,
+      lastUpdateAt: last_update_at,
       itemImage: item_image (
         itemId: item_id,
         storagePath: storage_path,
