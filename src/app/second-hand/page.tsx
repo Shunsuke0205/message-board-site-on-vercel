@@ -5,6 +5,29 @@ import ImageUploader from "./ImageUploader";
 import Link from "next/link";
 import Image from "next/image";
 
+type ItemImage = {
+  itemId: string;
+  storagePath: string;
+  isDeleted: boolean;
+  postedBy: string;
+};
+
+type Item = {
+  id: string;
+  title: string;
+  description: string;
+  itemImage: ItemImage[];
+  is_open: boolean;
+  is_deleted: boolean;
+  last_update_at: string;
+};
+
+type ItemWithImageUrl = Item & {
+  itemImage: (ItemImage & {
+    signedUrl?: string;
+  })[];
+};
+
 const SecondHandPostList = async () => {
   const supabase = await createClient();
   const { data: itemData, error: itemError } = await supabase
@@ -40,11 +63,11 @@ const SecondHandPostList = async () => {
     console.error("Error fetching signed URLs in SecondHandPostList:", urlError);
     return <div className="text-red-500">画像の取得に失敗しました。</div>;
   }
-  const itemsWithUrl = itemData.map((item, index) => {
+  const itemsWithUrl : ItemWithImageUrl[] = itemData.map((item, index) => {
     const url = urlData?.[index]?.signedUrl;
     return {
       ...item,
-      itemImage: item.itemImage.map((img) => ({
+      itemImage: item.itemImage.map((img : ItemImage) => ({
         ...img,
         signedUrl: url,
       })),
@@ -58,12 +81,16 @@ const SecondHandPostList = async () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
       {itemsWithUrl.map((item) => {
+        let imageUrl = "/dm_icon.png";
+        if (item.itemImage && item.itemImage.length > 0 && item.itemImage[0].signedUrl) {
+          imageUrl = item.itemImage[0].signedUrl;
+        }
         return (
           <Link href={`/second-hand/${item.id}`} key={item.id}>
             <div className="relative w-full aspect-square bg-white shadow-md rounded overflow-hidden hover:shadow-lg transition">
               {/* サムネイル画像 */}
               <Image
-                src={item.itemImage?.[0]?.signedUrl}
+                src={imageUrl}
                 alt={item.title || 'No Title'}
                 width={300}
                 height={300}
