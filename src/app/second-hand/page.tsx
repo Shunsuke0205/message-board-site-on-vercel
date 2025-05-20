@@ -79,7 +79,7 @@ const SecondHandPostList = async () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
       {itemsWithUrl.map((item) => {
-        let imageUrl = "/dm_icon.png";
+        let imageUrl = "/closed_item.png";
         if (item.itemImage && item.itemImage.length > 0 && item.itemImage[0].signedUrl) {
           imageUrl = item.itemImage[0].signedUrl;
         }
