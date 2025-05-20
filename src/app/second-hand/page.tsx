@@ -1,7 +1,5 @@
 import React, { Suspense } from "react"
-import ImageFetch from "./ImageFetch"
 import { createClient } from "@/utils/supabase/server"
-import ImageUploader from "./ImageUploader";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -126,8 +124,6 @@ const SecondHandPage = () => {
       <Link href="/second-hand/upload">
         不用品を投稿する
       </Link>
-      {/* <ImageUploader /> */}
-      {/* <ImageFetch /> */}
       <Suspense fallback={<div>表示しています・・・</div>}>
         <SecondHandPostList />
       </Suspense>
