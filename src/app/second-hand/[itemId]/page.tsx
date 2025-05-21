@@ -1,4 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
 import React, { Suspense } from "react"
 
 type ItemImage = {
@@ -18,11 +19,6 @@ type Item = {
   lastUpdateAt: string;
 };
 
-type ItemWithImageUrl = Item & {
-  itemImage: (ItemImage & {
-    signedUrl?: string;
-  })[];
-};
 
 
 export default async function SecondHandItem({
@@ -62,18 +58,58 @@ export default async function SecondHandItem({
   if (urlError || !urlData) {
     console.error("Error creating signed URL in SecondHandItem:", urlError);
   }
-  const itemWithImageUrl: ItemWithImageUrl = {
-    ...itemData,
-    itemImage: itemData.itemImage.map((image: ItemImage) => ({
-      ...image,
-      signedUrl: urlData?.signedUrl,
-    })),
-  };
+  const imageUrl = urlData?.signedUrl ? urlData.signedUrl : "/closed_item.png";
+
   return (
-    <div>
-      <Suspense fallback={<div>表示しています・・・</div>}>
-        {itemId}
-      </Suspense>
+  <div className="mt-5">
+    <div className="relative">
+      {/* 商品画像 */}
+      <div className="w-full aspect-square bg-gray-200 rounded-lg overflow-hidden">
+        <Image
+          src={imageUrl}
+          alt={itemData.title}
+          width={500}
+          height={500}
+          className="w-auto h-full max-h-full max-w-full object-contain mx-auto my-auto"
+        />
+      </div>
+
+      {/* 終了ラベル（受付終了のとき） */}
+      {!itemData.isOpen && (
+        <div className="absolute top-0 left-0 w-0 h-0 border-t-[100px] border-r-[100px] border-t-red-600 border-r-transparent">
+          <span className="absolute top-[-51px] left-[8px] text-white font-bold rotate-[-45deg] origin-top-left">
+            CLOSED
+          </span>
+        </div>
+      )}
+
+      {/* 商品情報 */}
+      <div className="p-4">
+        <h1 className="text-xl font-semibold text-gray-900 mb-2">
+          {itemData.title}
+        </h1>
+        <p className="text-sm text-gray-600 mb-4">
+          最終更新日: {new Date(itemData.lastUpdateAt).toLocaleDateString()}
+        </p>
+
+        <div className="border-t pt-4">
+          <p className="text-gray-800 text-base leading-relaxed whitespace-pre-wrap">
+            {itemData.description}
+          </p>
+        </div>
+
+        {/* 状態表示 */}
+        <div className="mt-6 flex items-center gap-4 text-sm">
+          <span
+            className={`px-3 py-1 rounded-full font-medium ${
+              itemData.isOpen ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
+            }`}
+          >
+            {itemData.isOpen ? "受付中" : "終了"}
+          </span>
+        </div>
+      </div>
     </div>
+  </div>
   )
 };
