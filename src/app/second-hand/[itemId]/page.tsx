@@ -83,8 +83,8 @@ export default async function SecondHandItem({
         </div>
       )}
 
-      {/* 商品情報 */}
-      <div className="p-4">
+      {/* 商品説明文 */}
+      <div className="mt-4">
         <h1 className="text-xl font-semibold text-gray-900 mb-2">
           {itemData.title}
         </h1>
