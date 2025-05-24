@@ -45,7 +45,7 @@ const ReactionButton = ({ complain }: ComplainCardProps) => {
  
   const updateTearCountOnServer = async (complainId: string, newTearCount: number) => {
     const { error } = await supabase
-      .from("reactionToComplain")
+      .from("reaction_to_complain")
       .update({ tear: newTearCount })
       .eq("id", complainId);
 
@@ -56,7 +56,7 @@ const ReactionButton = ({ complain }: ComplainCardProps) => {
 
   const updateHeartCountOnServer = async (complainId: string, newHeartCount: number) => {
     const { error } = await supabase
-      .from("reactionToComplain")
+      .from("reaction_to_complain")
       .update({ heart: newHeartCount })
       .eq("id", complainId);
 
@@ -67,7 +67,7 @@ const ReactionButton = ({ complain }: ComplainCardProps) => {
 
   const updateCheerCountOnServer = async (complainId: string, newCheerCount: number) => {
     const { error } = await supabase
-      .from("reactionToComplain")
+      .from("reaction_to_complain")
       .update({ cheer: newCheerCount })
       .eq("id", complainId);
 

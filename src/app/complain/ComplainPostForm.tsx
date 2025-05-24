@@ -8,22 +8,6 @@ const ComplainPostForm = () => {
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
 
-  /*
-  useEffect(() => {
-    const fetchUser = async () => {
-      const supabase = createClient();
-      const { data, error } = await supabase.auth.getUser();
-      if (error || !data?.user) {
-        console.error("Error fetching user in ComplainPostForm:", error);
-        return;
-      } else {
-        // setName(data.user.id);
-      }
-    };
-
-    fetchUser();
-  }, []);
-  */
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +34,7 @@ const ComplainPostForm = () => {
         return;
       }
       const { error: reactionError } = await supabase
-        .from("reactionToComplain")
+        .from("reaction_to_complain")
         .insert([{
           id: complainData.id,
           tear: 1,

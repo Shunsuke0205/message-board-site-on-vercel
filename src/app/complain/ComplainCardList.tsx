@@ -10,7 +10,7 @@ const ComplainCardList = async () => {
     .from("complain")
     .select(`
       *,
-      reactionToComplain(
+      reactionToComplain: reaction_to_complain (
         tear,
         heart,
         cheer
