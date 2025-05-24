@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { Suspense } from "react"
 import ItemRequestForm from "./itemRequestForm";
 import CommentCard from "./commentCard";
+import { CommentProps } from "./type";
 
 type ItemImage = {
   itemId: string;
@@ -63,19 +64,13 @@ export default async function SecondHandItem({
   }
   const imageUrl = urlData?.signedUrl ? urlData.signedUrl : "/closed_item.png";
 
-  const { data: commentData, error: commentError } = await supabase
+  const { data: commentsData, error: commentsError } = await supabase
     .from("item_request")
     .select(`
-      id,
-      createdAt: created_at,
-      itemId: item_id,
-      postedBy: posted_by,
-      body,
-      isDeleted: is_deleted,
-      profile: profile (
-        userId: userId,
-        nickname: nickname,
-        icon: icon
+      *,
+      profile (
+        nickname,
+        icon
       )
     `)
     .eq("item_id", itemId)
@@ -83,10 +78,10 @@ export default async function SecondHandItem({
     .order("created_at", { ascending: false })
     .limit(20);
 
-  if (commentError) {
-    console.error("Error fetching comments in SecondHandItem:", commentError);
+  if (commentsError || !commentsData) {
+    console.error("Error fetching comments in SecondHandItem:", commentsError);
   }
-  console.log("commentData", commentData);
+
 
   return (
     <div className="mt-5">
@@ -147,14 +142,15 @@ export default async function SecondHandItem({
       <Suspense fallback={<div className="text-gray-500">コメントを表示しています・・・</div>}>
         {/* コメント一覧 */}
         <div className="mt-4">
-          {commentData != null && commentData.length > 0 ? (
+          {commentsData != null && commentsData.length > 0 ? (
             <div>
-              
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">コメント一覧</h2>
-            {
-            commentData.map((comment) => {
-              return <CommentCard key={comment.id} comment={comment} />;
-            })}
+              <h2 className="text-lg font-semibold text-gray-900 mb-2">コメント一覧</h2>
+              {commentsData.map((comment: CommentProps) => {
+                if (comment.isDeleted) {
+                  return null;
+                }
+                return <CommentCard key={comment.id} comment={comment} />;
+              })}
             </div>
           ) : (
             <p className="text-gray-500">コメントはまだありません。</p>
