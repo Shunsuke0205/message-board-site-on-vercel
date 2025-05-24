@@ -28,6 +28,12 @@ type ItemWithImageUrl = Item & {
 
 const SecondHandPostList = async () => {
   const supabase = await createClient();
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData) {
+    console.error("Error fetching user data in SecondHandPostList:", userError);
+    return <div>おゆずり機能をお使いいただくために、ログインをお願いいたします。</div>;
+  }
+
   const { data: itemData, error: itemError } = await supabase
     .from("second_hand_item")
     .select(`
