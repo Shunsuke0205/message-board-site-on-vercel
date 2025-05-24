@@ -1,5 +1,4 @@
 export type Profile = {
-  userId: string;
   nickname: string;
   icon: number;
 };
@@ -12,4 +11,4 @@ export type CommentProps = {
   body: string;
   isDeleted: boolean;
   profile: Profile;
-}
+};
