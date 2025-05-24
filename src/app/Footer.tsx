@@ -95,7 +95,7 @@ const Footer = () => {
             rounded-lg"
           >
             <Image
-              src="/gift_not_ready.png"
+              src="/gift.png"
               alt="Icon"
               width={40}
               height={40}
