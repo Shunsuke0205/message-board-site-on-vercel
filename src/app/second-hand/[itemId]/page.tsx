@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { Suspense } from "react"
 import ItemRequestForm from "./itemRequestForm";
 import CommentCard from "./commentCard";
-import { CommentProps } from "./type";
 
 type ItemImage = {
   itemId: string;
@@ -31,7 +30,7 @@ export default async function SecondHandItem({
 }) {
   const { itemId } = await params;
   const supabase = await createClient();
-  const { data: itemData, error: itemError } = await supabase
+  const { data: itemDataTmp, error: itemError } = await supabase
     .from("second_hand_item")
     .select(`
       id,
@@ -51,9 +50,10 @@ export default async function SecondHandItem({
     .eq("is_deleted", false)
     .single();
 
-  if (itemError || !itemData) {
+  if (itemError || !itemDataTmp) {
     return <div className="text-red-500">申し訳ございません。データの取得に失敗しました。</div>;
   }
+  const itemData = itemDataTmp as Item;
 
   const { data: urlData, error: urlError } = await supabase.storage
     .from("item")
