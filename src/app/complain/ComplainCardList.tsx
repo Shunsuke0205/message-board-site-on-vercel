@@ -16,7 +16,7 @@ const ComplainCardList = async () => {
         cheer
       )
     `)
-    .order("createdAt", { ascending: false })
+    .order("created_at", { ascending: false })
     .limit(20);
 
   if (error) {
@@ -35,10 +35,9 @@ const ComplainCardList = async () => {
       {data.map((post) => {
         const complain: ComplainProps = {
           id: post.id,
-          createdAt: post.createdAt,
+          createdAt: post.created_at,
           name: post.name,
           body: post.body,
-          bad: post.bad,
           category: post.category,
           reaction: {
             tear: post.reactionToComplain?.tear || 1,

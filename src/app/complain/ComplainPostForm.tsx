@@ -38,10 +38,6 @@ const ComplainPostForm = () => {
       .insert([{
         name: name,
         body: body,
-        tears: 1,
-        good: 1,
-        cheer: 1,
-        bad: 0,
       }])
       .select("*")
       .single();

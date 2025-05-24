@@ -30,7 +30,6 @@ export type ComplainProps = {
   createdAt: string;
   name: string;
   body: string;
-  bad: number;
   category: number;
   reaction?: {
     tear: number;
