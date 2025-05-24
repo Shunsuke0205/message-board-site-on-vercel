@@ -23,7 +23,7 @@ const ItemRequestForm = ({ itemId }: { itemId: string }) => {
       return;
     }
 
-    const { data: replyData, error: replyError } = await supabase
+    const { error } = await supabase
       .from("item_request")
       .insert([{
         item_id: itemId,
@@ -34,8 +34,8 @@ const ItemRequestForm = ({ itemId }: { itemId: string }) => {
       .select("id")
       .single();
 
-    if (replyError) {
-      console.error("Error inserting reply in ItemRequestForm:", replyError);
+    if (error) {
+      console.error("Error inserting reply in ItemRequestForm:", error);
     } else {
       setBody(""); // actually this is not necessary
       window.location.reload();
