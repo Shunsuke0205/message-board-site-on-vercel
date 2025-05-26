@@ -67,7 +67,12 @@ export default async function SecondHandItem({
   const { data: commentsData, error: commentsError } = await supabase
     .from("item_request")
     .select(`
-      *,
+      createdAt: created_at,
+      isDeleted: is_deleted,
+      itemId: item_id,
+      postedBy: posted_by,
+      body,
+      id,
       profile (
         nickname,
         icon
@@ -81,6 +86,13 @@ export default async function SecondHandItem({
   if (commentsError || !commentsData) {
     console.error("Error fetching comments in SecondHandItem:", commentsError);
   }
+
+  const normalizedData: CommentProps[] = commentsData ? commentsData.map((comment) => ({
+    ...comment,
+    profile: Array.isArray(comment.profile)
+      ? comment.profile[0] ?? null
+      : comment.profile,
+  })) : []; // To avoid the type inference bug. comment.profile is wrongly inferred as an array type.
 
 
   return (
@@ -145,10 +157,10 @@ export default async function SecondHandItem({
       <Suspense fallback={<div className="text-gray-500">コメントを表示しています・・・</div>}>
         {/* コメント一覧 */}
         <div className="mt-4">
-          {commentsData != null && commentsData.length > 0 ? (
+          {normalizedData != null && normalizedData.length > 0 ? (
             <div>
               <h2 className="text-lg font-semibold text-gray-900 mb-2">コメント一覧</h2>
-              {commentsData.map((comment: CommentProps) => {
+              {normalizedData.map((comment: CommentProps) => {
                 if (comment.isDeleted) {
                   return null;
                 }
