@@ -138,7 +138,10 @@ export default async function SecondHandItem({
       </Suspense>
 
       {/* コメントフォーム */}
-      <ItemRequestForm itemId={itemId} />
+      {itemData.isOpen && (
+        <ItemRequestForm itemId={itemId} />
+      )}
+
       <Suspense fallback={<div className="text-gray-500">コメントを表示しています・・・</div>}>
         {/* コメント一覧 */}
         <div className="mt-4">
