@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { Suspense } from "react"
 import ItemRequestForm from "./itemRequestForm";
 import CommentCard from "./commentCard";
-import { CommentProps } from "./type";
+import { CommentProps } from "@/utils/postType";
 
 type ItemImage = {
   itemId: string;

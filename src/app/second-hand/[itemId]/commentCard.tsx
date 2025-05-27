@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 import LocalizedDate from "@/component/LocalTime";
-import { CommentProps } from "./type";
 import DeleteButton from "@/app/posts/DeleteButton";
+import { CommentProps } from "@/utils/postType";
 
 
 type CommentCardProps = {
