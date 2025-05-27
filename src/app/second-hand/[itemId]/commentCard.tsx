@@ -4,13 +4,15 @@ import Link from "next/link";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 import LocalizedDate from "@/component/LocalTime";
 import { CommentProps } from "./type";
+import DeleteButton from "@/app/posts/DeleteButton";
 
 
 type CommentCardProps = {
   comment: CommentProps;
+  isOwner?: boolean;
 };
 
-const CommentCard = ({ comment } : CommentCardProps) => {
+const CommentCard = ({ comment, isOwner } : CommentCardProps) => {
   return (
     <article
       key={comment.itemId}
@@ -41,7 +43,7 @@ const CommentCard = ({ comment } : CommentCardProps) => {
         <p className="whitespace-pre-wrap mt-4">
           {comment.body}
         </p>
-        {/* <DeleteButton post={reply} tableName="replyToPost" /> */}
+        { isOwner && <DeleteButton post={comment} tableName="item_request" /> }
       </div>
     </article>
   )
