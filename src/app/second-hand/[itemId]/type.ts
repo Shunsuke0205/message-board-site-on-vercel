@@ -4,7 +4,7 @@ export type Profile = {
 };
 
 export type CommentProps = {
-  id: number;
+  id: string;
   createdAt: string;
   itemId: string;
   postedBy: string;
