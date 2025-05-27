@@ -94,6 +94,7 @@ export default async function SecondHandItem({
       : comment.profile,
   })) : []; // To avoid the type inference bug. comment.profile is wrongly inferred as an array type.
 
+  const { data: userData } = await supabase.auth.getUser();
 
   return (
     <div className="mt-5">
@@ -164,7 +165,8 @@ export default async function SecondHandItem({
                 if (comment.isDeleted) {
                   return null;
                 }
-                return <CommentCard key={comment.id} comment={comment} />;
+                const isOwner = userData?.user ? (comment.postedBy === userData.user.id) : false;
+                return <CommentCard key={comment.id} comment={comment} isOwner={isOwner} />;
               })}
             </div>
           ) : (
