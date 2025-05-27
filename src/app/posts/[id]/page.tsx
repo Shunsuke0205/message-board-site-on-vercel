@@ -63,6 +63,7 @@ export default async function ThreadPage({
     return <div>No original post found</div>;
   }
 
+  const { data: userData } = await supabase.auth.getUser();
 
   return (
     <div>
@@ -92,11 +93,13 @@ export default async function ThreadPage({
               like: reply.reaction?.like
             }
           };
+          const isOwner = userData?.user ? (replyData.postedBy === userData.user.id) : false;
 
           return (
             <ReplyCard
               key={replyData.id}
               reply={replyData}
+              isOwner={isOwner}
             />
           )
         })}

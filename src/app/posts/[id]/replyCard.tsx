@@ -11,10 +11,11 @@ import LocalizedDate from "@/component/LocalTime";
 
 export type ReplyCardProps = {
   reply: ReplyProps;
+  isOwner?: boolean;
 };
 
-const ReplyCard = ({ reply } : ReplyCardProps) => {
-  const reaction : ReactionToPostProps = {
+const ReplyCard = ({ reply, isOwner }: ReplyCardProps) => {
+  const reaction: ReactionToPostProps = {
     id: reply.id,
     like: reply.reactionToReply.like,
   }
@@ -51,7 +52,7 @@ const ReplyCard = ({ reply } : ReplyCardProps) => {
         <div className="mt-2">
           <ReactionButtonOnReply reaction={reaction} />
         </div>
-        <DeleteButton post={reply} tableName="replyToPost" />
+        { isOwner && <DeleteButton post={reply} tableName="replyToPost" /> }
       </div>
     </article>
   )
