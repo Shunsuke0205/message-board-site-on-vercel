@@ -1,13 +1,15 @@
+export type Profile = {
+  nickname: string;
+  icon: number;
+};
+
 export type PostCommonProps = {
   id: string;
   createdAt: string;
   postedBy: string;
   body: string;
   isDeleted: boolean;
-  profile?: {
-    nickname: string;
-    icon: number;
-  }
+  profile: Profile;
 };
 
 export type PostProps = PostCommonProps & {
@@ -41,4 +43,8 @@ export type ComplainProps = {
 export type ReactionToPostProps = {
   id: string;
   like: number;
-}
+};
+
+export type CommentProps = PostCommonProps & {
+  itemId: string;
+};
