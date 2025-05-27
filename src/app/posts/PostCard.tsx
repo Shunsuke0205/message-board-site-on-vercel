@@ -11,9 +11,10 @@ import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 
 export type PostCardProps = {
   post: PostProps;
+  isOwner?: boolean;
 };
 
-const PostCard = ({ post }: PostCardProps) => {
+const PostCard = ({ post, isOwner }: PostCardProps) => {
   const reaction : ReactionToPostProps = {
     id: post.id,
     like: post.reactionToPost.like,
@@ -59,7 +60,9 @@ const PostCard = ({ post }: PostCardProps) => {
             <ReplyCount postId={post.id} />
           </div>
         </Link>
-        <DeleteButton post={post} tableName="post" />
+        { isOwner &&
+          <DeleteButton post={post} tableName="post" />
+        }
       </div>
     </article>
   )

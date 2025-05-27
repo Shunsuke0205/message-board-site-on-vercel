@@ -31,6 +31,8 @@ const PostCardList = async () => {
 
   // console.log("Fetched data:", data);
 
+  const { data: userData } = await supabase.auth.getUser();
+
   return (
     <div>
       {data.map((post) => {
@@ -54,10 +56,12 @@ const PostCardList = async () => {
         if (postData.isDeleted) {
           return null;
         }
+        const isOwner = userData?.user ? (postData.postedBy === userData.user.id) : false;
         return (
           <PostCard
             key={postData.id}
             post={postData}
+            isOwner={isOwner}
           />
         )
       })}
