@@ -5,6 +5,7 @@ import ItemRequestForm from "./itemRequestForm";
 import CommentCard from "./commentCard";
 import { CommentProps } from "@/utils/postType";
 import DeleteButton from "./DeleteButton";
+import CloseButton from "./CloseButton";
 
 type ItemImage = {
   itemId: string;
@@ -132,12 +133,20 @@ export default async function SecondHandItem({
             
             {/* 🆕 投稿者のみが見ることのできる操作ボタン（取引終了・削除） */}
             {userData?.user?.id === itemData.postedBy && (
-              <DeleteButton
-                tableName="second_hand_item"
-                id={itemData.id}
-                postedBy={itemData.postedBy}
-                discription="このアイテムを削除する"
-              />
+              <div>
+                <DeleteButton
+                  tableName="second_hand_item"
+                  id={itemData.id}
+                  postedBy={itemData.postedBy}
+                  discription="このアイテムを削除する"
+                />
+                <CloseButton
+                  tableName="second_hand_item"
+                  id={itemData.id}
+                  postedBy={itemData.postedBy}
+                  discription="取引を終了する"
+                />
+              </div>
             )}
 
             {/* 商品説明文 */}
