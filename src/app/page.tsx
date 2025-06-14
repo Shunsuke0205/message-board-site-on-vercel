@@ -78,6 +78,9 @@ export default function Home() {
       <h2 className="mt-5 text-lg">実装できた機能</h2>
       <ul>
         <li>
+          おゆずりアイテムの削除・クローズボタン
+        </li>
+        <li>
           <Link href={"/second-hand"} className="underline">
             おゆずり機能！
           </Link>
@@ -97,10 +100,6 @@ export default function Home() {
         <li>投稿と返信の削除機能</li>
         <li>Postのハートリアクション機能</li>
         <li>平田駿輔の自己紹介ページ</li>
-        <li>返信</li>
-        <li>返信の数の表示</li>
-        <li>ローディングページ</li>
-        <li>スレッドページ</li>
       </ul>
     </div>
   );
