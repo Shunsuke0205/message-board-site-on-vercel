@@ -131,9 +131,9 @@ export default async function SecondHandItem({
               </div>
             )}
             
-            {/* 🆕 投稿者のみが見ることのできる操作ボタン（取引終了・削除） */}
+            {/* 投稿者のみが見ることのできる操作ボタン（取引終了・削除） */}
             {userData?.user?.id === itemData.postedBy && (
-              <div>
+              <div className="flex justify-end gap-4">
                 <DeleteButton
                   tableName="second_hand_item"
                   id={itemData.id}
