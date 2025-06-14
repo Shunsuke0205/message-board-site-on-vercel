@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
 import LocalizedDate from "@/component/LocalTime";
-import DeleteButton from "@/app/posts/DeleteButton";
+// import DeleteButton from "@/app/posts/DeleteButton";
 import { CommentProps } from "@/utils/postType";
 
 
@@ -12,7 +12,7 @@ type CommentCardProps = {
   isOwner?: boolean;
 };
 
-const CommentCard = ({ comment, isOwner } : CommentCardProps) => {
+const CommentCard = ({ comment, /* isOwner */ } : CommentCardProps) => {
   return (
     <article
       key={comment.itemId}
