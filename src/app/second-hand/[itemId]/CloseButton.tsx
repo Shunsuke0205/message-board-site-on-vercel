@@ -44,10 +44,10 @@ const CloseButton = ({ tableName, id, postedBy, discription } : CloseButtonProps
     <div>
       <button
         className="
-          mt-3 px-4 py-1 
-          bg-red-400 
+          mt-3 px-4 py-2 
+          bg-gray-600 
           font-bold text-white 
-          rounded cursor-pointer"
+          rounded-xl cursor-pointer"
         onClick={deleteHandler}
       >
         {discription || "取引を終了する"}
