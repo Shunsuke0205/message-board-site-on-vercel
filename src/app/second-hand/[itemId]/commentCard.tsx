@@ -43,7 +43,7 @@ const CommentCard = ({ comment, isOwner } : CommentCardProps) => {
         <p className="whitespace-pre-wrap mt-4">
           {comment.body}
         </p>
-        { isOwner && <DeleteButton post={comment} tableName="item_request" /> }
+        {/* { isOwner && <DeleteButton post={comment} tableName="item_request" /> } */}
       </div>
     </article>
   )
