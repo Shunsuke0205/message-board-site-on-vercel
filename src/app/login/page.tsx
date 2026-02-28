@@ -1,44 +1,29 @@
-import { login, signup } from "./actions"
+import Link from "next/link";
+import { LoginComponent } from "./LoginComponent";
 
 export default function LoginPage() {
   return (
-    <div>
-      <p>新規登録の際は8文字以上のパスワードを設定してください。<br />
-        8文字よりも短いと、エラーとなり登録ができません。
-      </p>
-      <p>入力したメールアドレスに、「Supabase Auth」というところから<br />
-      「ひとりおやのコミュニティサイト「えん」」という件名でメールが届きます。</p>
-      <p>メールのリンクをクリックしたら登録が完了します。</p>
+    <div className="h-screen pt-4 flex items-start justify-center bg-gray-100">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 space-y-6">
+        <h1 className="text-3xl font-bold text-center text-gray-800">ログイン</h1>
+        
+        <LoginComponent />
 
-      <form className="border mt-4 p-4">
-        <div className="max-w-xs border-b border-gray-100">
-          <label htmlFor="email">Email:</label>
-          <input id="email" name="email" type="email" required className="ml-2 border border-gray-300" />
+        {/* leads to signup page */}
+        <div className="mt-8">
+          <p className="text-sm text-gray-600">
+            アカウントをお持ちでないですか？
+            <br />
+            メールアドレスを使って、1 分ほどでアカウントを作成できます。
+          </p>
+          <Link href="/signup">
+            <button className="mt-4 w-full py-2 px-4 border border-indigo-600 text-indigo-700 font-light rounded-lg hover:bg-indigo-50 transition duration-300 ease-in-out">
+              新規登録はこちら
+            </button>
+          </Link>
         </div>
-        <div className="max-w-xs border-b border-gray-100">
-          <label htmlFor="password">Password:</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            minLength={8}
-            required
-            className="ml-2 border border-gray-300"
-          />
-        </div>
-        <button
-          formAction={login}
-          className="mt-1 ml-2 px-2 py-1 bg-gray-100 cursor-pointer rounded-lg"
-        >
-          ログイン
-        </button>
-        <button
-          formAction={signup}
-          className="mt-1 ml-2 px-2 py-1 bg-gray-100 cursor-pointer rounded-lg"
-        >
-          新規登録
-        </button>
-      </form>
+      </div>
     </div>
-  )
+  );
 }
+
