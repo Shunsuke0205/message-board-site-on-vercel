@@ -1,6 +1,5 @@
 import LocalizedDate from "@/component/LocalTime";
 import { createClient } from "@/lib/supabase/server";
-import React from "react"
 
 type MessageListProps = {
   channelId: string;
