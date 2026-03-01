@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import { Suspense } from "react"
 import DirectMessagePage from "./DirectMessagePage";
 
 export default async function Page({

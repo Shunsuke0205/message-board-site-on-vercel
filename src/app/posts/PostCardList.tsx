@@ -1,5 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
-import React from "react";
+import { createClient } from "@/lib/supabase/server";
 import PostCard from "./PostCard";
 import { PostProps } from "@/utils/postType";
 

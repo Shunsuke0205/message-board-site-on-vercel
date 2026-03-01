@@ -1,5 +1,5 @@
-import { createClient } from "@/utils/supabase/server";
-import React, { Suspense } from "react"
+import { createClient } from "@/lib/supabase/server";
+import { Suspense } from "react";
 import MessageForm from "./MessageFrom";
 import TargetProfile from "./TargetProfile";
 import MessageList from "./MessageList";

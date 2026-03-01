@@ -1,4 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import ReplyForm from "./replyForm";
 import PostCard from "../PostCard";
 import ReplyCard from "./replyCard";

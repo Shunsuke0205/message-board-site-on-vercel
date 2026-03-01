@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import { Suspense } from "react"
 import ComplainCardList from "./ComplainCardList"
 import ComplainPostForm from "./ComplainPostForm"
 

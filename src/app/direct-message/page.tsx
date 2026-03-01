@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { Suspense } from "react"
+import { Suspense } from "react"
 import AllDMList from "./AllDMList";
 
 const DM_List = async () => {

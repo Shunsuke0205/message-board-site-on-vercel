@@ -1,6 +1,5 @@
-import React from "react"
 import ComplainCard from "./ComplainCard"
-import { createClient } from "@/utils/supabase/server"
+import { createClient } from "@/lib/supabase/server"
 import { ComplainProps } from "@/utils/postType";
 
 const ComplainCardList = async () => {

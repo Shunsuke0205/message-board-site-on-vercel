@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import { ReactionToPostProps } from "@/utils/postType";
 
 type ReactionButtonProps = {

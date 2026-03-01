@@ -1,6 +1,5 @@
 import LocalizedDate from "@/component/LocalTime";
 import { ComplainProps } from "@/utils/postType";
-import React from "react"
 import ReactionButton from "./ReactionButton";
 
 

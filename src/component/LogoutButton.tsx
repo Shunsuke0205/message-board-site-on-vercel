@@ -1,8 +1,8 @@
 "use client"
 
 import { logout } from "@/app/login/actions";
-import { createClient } from "@/utils/supabase/client";
-import React, { useEffect, useState } from "react"
+import { createClient } from "@/lib/supabase/client";
+import { useEffect, useState } from "react"
 
 
 

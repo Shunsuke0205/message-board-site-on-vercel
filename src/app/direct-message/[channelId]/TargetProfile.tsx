@@ -1,8 +1,7 @@
 import iconNumberToSource from "@/utils/iconManeger/iconNumberToSource";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react"
 
 type TargetProfileProps = {
   targetId: string;

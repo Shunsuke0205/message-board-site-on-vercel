@@ -1,7 +1,7 @@
 "use client"
 
 import { iconDataList } from "@/utils/iconManeger/iconData";
-import { createClient } from "@/utils/supabase/client"
+import { createClient } from "@/lib/supabase/client"
 import Link from "next/link";
 import React, { useEffect, useState } from "react"
 

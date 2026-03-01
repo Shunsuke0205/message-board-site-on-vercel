@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import PostCardList from "./PostCardList";
 import PostForm from "./PostForm";
 import Image from "next/image";

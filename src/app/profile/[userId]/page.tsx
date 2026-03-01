@@ -1,4 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { ProfileType } from "../profileType";
 import LogoutButton from "@/component/LogoutButton";
 import Link from "next/link";
