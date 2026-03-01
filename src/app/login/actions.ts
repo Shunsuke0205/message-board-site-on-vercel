@@ -49,32 +49,31 @@ export async function login(formData: FormData) {
 
 
 export async function signup(formData: FormData) {
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
+  const emailValue = formData.get("email");
+  const passwordValue = formData.get("password");
+
+  if (!emailValue || !passwordValue) {
+    redirectWithError("Email and password are required.");
   }
-  if (!data.email) {
-    console.error("error: email is empty")
-    return;
-  } else if (!data.password) {
-    console.error("error: password is empty")
-    return;
-  } else if (data.password.length < 8) {
-    console.error("error: password is too short")
-    return;
+
+  const password = String(passwordValue).trim();
+  if (password.length < 8) {
+    redirectWithError("Password must be at least 8 characters long.");
   }
+  const email = String(emailValue).trim();
 
   const supabase = await createClient()
-  const { error } = await supabase.auth.signUp(data)
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+  })
 
   if (error) {
-    redirect('/error')
+    redirectWithError("Signup failed: " + error.message);
   }
 
-  revalidatePath('/posts', 'layout')
-  redirect('/posts')
+  revalidatePath("/", "layout");
+  redirect("/signup/guide"); 
 }
 
 export async function logout() {
@@ -83,9 +82,8 @@ export async function logout() {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
-    redirect('/error');
+    redirectWithError("Logout failed: " + error.message);
   }
-  console.log("Successfully logged out");
 
   revalidatePath('/posts', 'layout');
   redirect('/posts');
