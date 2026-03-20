@@ -12,7 +12,7 @@ type UserProfileProps = {
   selfIntro: string;
   icon: number;
   allowPostNotifications: boolean;
-  allowDMNotifications: boolean;
+  allowDmNotifications: boolean;
 }
 
 const EditPage = () => {
@@ -24,7 +24,7 @@ const EditPage = () => {
   const [sex, setSex] = useState<string>("");
   const [icon, setIcon] = useState<number>(-1);
   const [postNotificationEnabled, setPostNotificationEnabled] = useState<boolean>(false);
-  const [DMNotificationEnabled, setDMNotificationEnabled] = useState<boolean>(false);
+  const [dmNotificationEnabled, setDmNotificationEnabled] = useState<boolean>(false);
   
   // let userProfile: UserProfileType;
 
@@ -58,7 +58,7 @@ const EditPage = () => {
           selfIntro: data.selfIntro,
           icon: data.icon,
           allowPostNotifications: data.allowPostNotifications,
-          allowDMNotifications: data.allowDMNotifications,
+          allowDmNotifications: data.allowDmNotifications,
         }
         
         if (data.nickname === null || data.nickname === undefined) {
@@ -78,7 +78,8 @@ const EditPage = () => {
         }
         setIcon(data.icon);
         setPostNotificationEnabled(data.allowPostNotifications);
-        setDMNotificationEnabled(data.allowDMNotifications);
+        setDmNotificationEnabled(data.allowDmNotifications);
+        console.log("Fetched user profile in EditPage:", profile);
 
         setUserProfile(profile);
       }
@@ -128,12 +129,16 @@ const EditPage = () => {
       </div>
     ) : (
       <div>
-        <h1 className="mt-4 text-lg">このスマホの通知の設定</h1>
-        <NotificationSettings
-          userId={userId}
-          initialPostNotificationEnabled={postNotificationEnabled}
-          initialDMNotificationEnabled={DMNotificationEnabled}
-        />
+        {userProfile && (
+          <div>
+            <h1 className="mt-4 text-lg">このスマホの通知の設定</h1>
+            <NotificationSettings
+              userId={userId}
+              initialPostNotificationEnabled={postNotificationEnabled}
+              initialDMNotificationEnabled={dmNotificationEnabled}
+            />
+          </div>
+        )}
 
         <h1 className="mt-4 text-lg">現在のプロフィール</h1>
         <div className="mt-2 px-4 py-2 border-2 border-gray-300 rounded-lg">
