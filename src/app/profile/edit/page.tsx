@@ -4,12 +4,15 @@ import { iconDataList } from "@/utils/iconManeger/iconData";
 import { createClient } from "@/lib/supabase/client"
 import Link from "next/link";
 import React, { useEffect, useState } from "react"
+import NotificationSettings from "../NotificationSettings";
 
 type UserProfileProps = {
   nickname: string;
   sex: string;
   selfIntro: string;
   icon: number;
+  allowPostNotifications: boolean;
+  allowDMNotifications: boolean;
 }
 
 const EditPage = () => {
@@ -20,6 +23,8 @@ const EditPage = () => {
   const [selfIntro, setSelfIntro] = useState<string>("");
   const [sex, setSex] = useState<string>("");
   const [icon, setIcon] = useState<number>(-1);
+  const [postNotificationEnabled, setPostNotificationEnabled] = useState<boolean>(false);
+  const [DMNotificationEnabled, setDMNotificationEnabled] = useState<boolean>(false);
   
   // let userProfile: UserProfileType;
 
@@ -52,6 +57,8 @@ const EditPage = () => {
           sex: data.sex,
           selfIntro: data.selfIntro,
           icon: data.icon,
+          allowPostNotifications: data.allowPostNotifications,
+          allowDMNotifications: data.allowDMNotifications,
         }
         
         if (data.nickname === null || data.nickname === undefined) {
@@ -70,6 +77,9 @@ const EditPage = () => {
           setSex(data.sex);
         }
         setIcon(data.icon);
+        setPostNotificationEnabled(data.allowPostNotifications);
+        setDMNotificationEnabled(data.allowDMNotifications);
+
         setUserProfile(profile);
       }
     }
@@ -118,6 +128,13 @@ const EditPage = () => {
       </div>
     ) : (
       <div>
+        <h1 className="mt-4 text-lg">このスマホの通知の設定</h1>
+        <NotificationSettings
+          userId={userId}
+          initialPostNotificationEnabled={postNotificationEnabled}
+          initialDMNotificationEnabled={DMNotificationEnabled}
+        />
+
         <h1 className="mt-4 text-lg">現在のプロフィール</h1>
         <div className="mt-2 px-4 py-2 border-2 border-gray-300 rounded-lg">
           <p>
