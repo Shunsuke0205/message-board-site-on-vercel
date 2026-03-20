@@ -8,6 +8,7 @@ import Footer from "./Footer";
 export const metadata: Metadata = {
   title: "えん",
   description: "ひとりおやの方々のための交流サイト",
+  manifest: "/manifest.json",
 };
 
 export default async function RootLayout({
