@@ -51,15 +51,12 @@ export default function NotificationSettings({
   };
 
   return (
-    <div className="mt-8 pt-6 border-t border-gray-200">
-      <h3 className="text-lg font-bold text-gray-800 mb-1">通知設定</h3>
-      <p className="text-xs text-gray-500 mb-4">※このデバイス（ブラウザ）での通知設定です。</p>
-      
+    <div className="pt-2 border-gray-200">
       <div className="space-y-3">
         <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
           <div>
             <span className="block font-medium text-sm">ポスト投稿通知</span>
-            <span className="text-xs text-gray-500">毎日21時に新着をお知らせ</span>
+            <span className="text-xs text-gray-500">もし新しい投稿があったら、21時に通知がスマホに届きます。</span>
           </div>
           <button 
             onClick={() => handleToggle("post", postNotificationEnabled)}
@@ -72,7 +69,7 @@ export default function NotificationSettings({
         <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
           <div>
             <span className="block font-medium text-sm">DM受信通知</span>
-            <span className="text-xs text-gray-500">メッセージが届いたら即座にお知らせ</span>
+            <span className="text-xs text-gray-500">メッセージが届いたら即座に通知がスマホに届きます。</span>
           </div>
           <button 
             onClick={() => handleToggle("dm", DMNotificationEnabled)}
