@@ -44,6 +44,7 @@ Deno.serve(async (req) => {
     const pushPayload = JSON.stringify({
       title: "「えん」新着メッセージ",
       body: "「えん」で新しいメッセージが届きました。",
+      badge: 1,
       data: { url: `/direct_message/${record.channel_id}` },
     });
 
