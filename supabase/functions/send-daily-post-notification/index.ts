@@ -12,7 +12,9 @@ Deno.serve(async () => {
   const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
   try {
-    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+    const date = new Date();
+    date.setHours(date.getHours() - 24);
+    const twentyFourHoursAgo = date.toISOString();
 
     const { count, error: postError } = await supabaseAdmin
       .from("post")
