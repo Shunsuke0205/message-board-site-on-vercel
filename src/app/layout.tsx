@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: "えん",
   description: "ひとりおやの方々のための交流サイト",
   manifest: "/manifest.json",
+
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "えん",
+  },
+  icons: {
+    apple: "/product_icon.png",
+  }
 };
 
 export default async function RootLayout({
