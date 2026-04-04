@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "えん",
   },
   icons: {
-    apple: "/product_icon.png",
+    apple: "/apple-touch-icon.png",
   }
 };
 
