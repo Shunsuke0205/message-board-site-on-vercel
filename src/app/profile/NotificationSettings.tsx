@@ -44,7 +44,7 @@ export default function NotificationSettings({
 
     const updateData = (type === "post")
       ? { "allowPostNotifications": newValue }
-      : { "allowDMNotifications": newValue };
+      : { "allowDmNotifications": newValue };
 
     const supabase = createClient();
     await supabase.from("profile").update(updateData).eq("userId", userId);
