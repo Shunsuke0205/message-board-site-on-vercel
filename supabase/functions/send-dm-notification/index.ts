@@ -23,7 +23,7 @@ Deno.serve(async (req) => {
       .from("profile")
       .select(`
         "allowDmNotifications",
-        push_subscriptions:push_subscriptions!push_subscriptions_profile_userId_fkey ( endpoint, auth_key, p256dh_key )
+        push_subscriptions ( endpoint, auth_key, p256dh_key )
       `)
       .eq("userId", record.to)
       .single();
