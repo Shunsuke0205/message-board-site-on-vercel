@@ -51,6 +51,9 @@ Deno.serve(async () => {
       data: { url: "/posts" }
     });
 
+    console.log(`Sending daily post notification with payload:`, pushPayload);
+
+
     const pushResults = await Promise.allSettled(
       allSubscriptions.map(async (sub: any) => {
         try {
