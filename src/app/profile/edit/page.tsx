@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client"
 import Link from "next/link";
 import React, { useEffect, useState } from "react"
 import NotificationSettings from "../NotificationSettings";
+import TestNotificationButton from "@/utils/TestNotificationButton";
 
 type UserProfileProps = {
   nickname: string;
@@ -137,6 +138,7 @@ const EditPage = () => {
               initialPostNotificationEnabled={postNotificationEnabled}
               initialDMNotificationEnabled={dmNotificationEnabled}
             />
+            <TestNotificationButton />
           </div>
         )}
 
