@@ -138,7 +138,7 @@ const EditPage = () => {
               initialPostNotificationEnabled={postNotificationEnabled}
               initialDMNotificationEnabled={dmNotificationEnabled}
             />
-            <TestNotificationButton />
+            {/* <TestNotificationButton /> */}
           </div>
         )}
 
