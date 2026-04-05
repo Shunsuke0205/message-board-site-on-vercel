@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import PostCardList from "./PostCardList";
 import PostForm from "./PostForm";
 import Image from "next/image";
+import NotificationCleaner from "@/utils/NotificationCleaner";
 
 const page = () => {
   const Explanation = () => {
@@ -37,6 +38,7 @@ const page = () => {
   }
   return (
     <div>
+      <NotificationCleaner tag="post-notification" />
       <Explanation />
       <Suspense fallback={<p>表示しています・・・</p>}>
         <PostForm />
