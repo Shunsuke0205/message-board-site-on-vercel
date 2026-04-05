@@ -3,7 +3,7 @@ self.addEventListener('push', function (event) {
     const data = event.data.json();
 
     if (data.badgeCount && 'setAppBadge' in self.navigator) {
-      self.navigator.setAppBadge(data.badgeCount);
+      promises.push(self.navigator.setAppBadge(data.badgeCount));
     }
 
     const options = {
