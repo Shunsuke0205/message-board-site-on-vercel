@@ -18,7 +18,7 @@ self.addEventListener('push', function (event) {
       data: {
         url: data.data?.url ? `${data.data.url}?from=push` : '/?from=push',
       },
-      tag: "en-notification",
+      tag: data.tag || "en-notification",
     };
     promises.push(self.registration.showNotification(data.title, options));
 
