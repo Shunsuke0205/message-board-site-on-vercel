@@ -6,7 +6,7 @@ self.addEventListener('push', function (event) {
 
     if (data.badgeCount) {
       const badgePromise = navigator.setAppBadge
-        ? navigator.setAppBadge(1).catch(error => console.error("Badge update failed:", error))
+        ? navigator.setAppBadge(data.badgeCount).catch(error => console.error("Badge update failed:", error))
         : Promise.resolve();
       promises.push(badgePromise);
     }
@@ -31,16 +31,23 @@ self.addEventListener('notificationclick', function (event) {
   
   const targetUrl = event.notification.data?.url || '/';
 
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (clientList) {
-      for (const client of clientList) {
-        if (client.url.includes(targetUrl) && 'focus' in client) {
-          return client.focus();
-        }
+  const clearBadgePromise = navigator.clearAppBadge
+    ? navigator.clearAppBadge().catch(e => console.error(e))
+    : Promise.resolve();
+
+  const windowPromise = clients.matchAll({
+    type: 'window',
+    includeUncontrolled: true
+  }).then((clientList) => {
+    for (const client of clientList) {
+      if (client.url.includes(targetUrl) && 'focus' in client) {
+        return client.focus();
       }
-      if (clients.openWindow) {
-        return clients.openWindow(targetUrl);
-      }
-    })
-  );
+    }
+    if (clients.openWindow) {
+      return clients.openWindow(targetUrl);
+    }
+  });
+
+  event.waitUntil(Promise.all([clearBadgePromise, windowPromise]));
 });
