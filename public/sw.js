@@ -2,6 +2,8 @@ self.addEventListener('push', function (event) {
   if (event.data) {
     const data = event.data.json();
 
+    const promises = [];
+
     if (data.badgeCount && 'setAppBadge' in self.navigator) {
       promises.push(self.navigator.setAppBadge(data.badgeCount));
     }
@@ -14,8 +16,9 @@ self.addEventListener('push', function (event) {
         url: data.data?.url ? `${data.data.url}?from=push` : '/?from=push',
       },
     };
+    promises.push(self.registration.showNotification(data.title, options));
 
-    event.waitUntil(self.registration.showNotification(data.title, options));
+    event.waitUntil(Promise.all(promises));
   }
 });
 
