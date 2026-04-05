@@ -48,7 +48,6 @@ Deno.serve(async (req) => {
       data: { url: `/direct_message/${record.channel_id}` },
     });
 
-    console.log(`Sending DM notification to user ${record.to} with payload:`, pushPayload);
 
     const pushResults = await Promise.allSettled(
       receiver.push_subscriptions.map(async (sub: any) => {
