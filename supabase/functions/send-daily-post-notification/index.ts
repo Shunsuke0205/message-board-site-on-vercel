@@ -47,6 +47,7 @@ Deno.serve(async () => {
     const pushPayload = JSON.stringify({
       title: "「えん」新着ポストのお知らせ",
       body: "今日新しい投稿がありました！チェックしてみましょう。",
+      badgeCount: 1,
       data: { url: "/posts" }
     });
 

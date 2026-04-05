@@ -1,7 +1,11 @@
 self.addEventListener('push', function (event) {
   if (event.data) {
     const data = event.data.json();
-    
+
+    if (data.badgeCount && 'setAppBadge' in self.navigator) {
+      self.navigator.setAppBadge(data.badgeCount);
+    }
+
     const options = {
       body: data.body,
       icon: data.icon || '/product_icon.png',
