@@ -45,7 +45,7 @@ Deno.serve(async (req) => {
       title: "「えん」新着メッセージ",
       body: "「えん」で新しいメッセージが届きました。",
       badgeCount: 1,
-      data: { url: `/direct_message/${record.channel_id}` },
+      data: { url: `/direct-message/${record.channel_id}` },
       tag: "dm-notification",
     });
 
