@@ -11,7 +11,7 @@ self.addEventListener('push', function (event) {
       icon: data.icon || '/product_icon.png',
       badge: '/product_icon.png',
       data: {
-        url: data.url || '/',
+        url: data.data?.url ? `${data.data.url}?from=push` : '/?from=push',
       },
     };
 
