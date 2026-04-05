@@ -31,12 +31,15 @@ export async function subscribeToPushNotifications(userId: string) {
     const subJson = subscription.toJSON();
     const supabase = createClient();
 
-    const { error } = await supabase.from('push_subscriptions').upsert({
-      userId: userId,
-      endpoint: subJson.endpoint,
-      auth_key: subJson.keys?.auth,
-      p256dh_key: subJson.keys?.p256dh,
-    }, { onConflict: 'endpoint' });
+    const { error } = await supabase
+      .from('push_subscriptions')
+      .upsert({
+        userId: userId,
+        endpoint: subJson.endpoint,
+        auth_key: subJson.keys?.auth,
+        p256dh_key: subJson.keys?.p256dh,
+        updatedAt: new Date().toISOString(),
+      }, { onConflict: "userId" });
 
     if (error) throw error;
     return true;
