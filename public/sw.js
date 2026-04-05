@@ -4,7 +4,7 @@ self.addEventListener('push', function (event) {
 
     const promises = [];
 
-    if (true) {
+    if (data.badgeCount) {
       const badgePromise = navigator.setAppBadge
         ? navigator.setAppBadge(1).catch(error => console.error("Badge update failed:", error))
         : Promise.resolve();
