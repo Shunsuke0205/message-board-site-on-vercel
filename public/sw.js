@@ -4,8 +4,11 @@ self.addEventListener('push', function (event) {
 
     const promises = [];
 
-    if (data.badgeCount && 'setAppBadge' in self.navigator) {
-      promises.push(navigator.setAppBadge(data.badgeCount));
+    if (data.badgeCount) {
+      const badgePromise = navigator.setAppBadge
+        ? navigator.setAppBadge(count).catch(error => console.error("Badge update failed:", error))
+        : Promise.resolve();
+      promises.push(badgePromise);
     }
 
     const options = {
@@ -15,6 +18,7 @@ self.addEventListener('push', function (event) {
       data: {
         url: data.data?.url ? `${data.data.url}?from=push` : '/?from=push',
       },
+      tag: "en-notification",
     };
     promises.push(self.registration.showNotification(data.title, options));
 
