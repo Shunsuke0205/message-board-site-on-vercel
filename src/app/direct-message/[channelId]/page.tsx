@@ -1,5 +1,6 @@
 import { Suspense } from "react"
 import DirectMessagePage from "./DirectMessagePage";
+import NotificationCleaner from "@/utils/NotificationCleaner";
 
 export default async function Page({
   params,
@@ -10,6 +11,7 @@ export default async function Page({
 
   return (
     <div>
+      <NotificationCleaner tag="dm-notification" />
       <Suspense fallback={<p>表示しています・・・</p>}>
         <DirectMessagePage channelId={channelId} />
       </Suspense>

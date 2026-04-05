@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Suspense } from "react"
 import AllDMList from "./AllDMList";
+import NotificationCleaner from "@/utils/NotificationCleaner";
 
 const DM_List = async () => {
   return (
     <div>
+      <NotificationCleaner tag="dm-notification" />
       <h1 className="font-bold text-2xl my-2">
         ダイレクトメッセージの送り方
       </h1>
