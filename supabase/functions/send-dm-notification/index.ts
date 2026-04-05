@@ -29,7 +29,7 @@ Deno.serve(async (req) => {
       .single();
 
     if (profileError) throw profileError;
-    
+
     if (!receiver) {
       return new Response(JSON.stringify({ message: "Receiver not found" }), { status: 404 });
     }
@@ -39,14 +39,16 @@ Deno.serve(async (req) => {
     if (!receiver.push_subscriptions || receiver.push_subscriptions.length === 0) {
       return new Response(JSON.stringify({ message: "Receiver has no push subscriptions" }), { status: 403 });
     }
-    
-    
+
+
     const pushPayload = JSON.stringify({
       title: "「えん」新着メッセージ",
       body: "「えん」で新しいメッセージが届きました。",
       badgeCount: 1,
       data: { url: `/direct_message/${record.channel_id}` },
     });
+
+    console.log(`Sending DM notification to user ${record.to} with payload:`, pushPayload);
 
     const pushResults = await Promise.allSettled(
       receiver.push_subscriptions.map(async (sub: any) => {
