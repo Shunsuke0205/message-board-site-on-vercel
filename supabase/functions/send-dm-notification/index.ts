@@ -49,9 +49,11 @@ Deno.serve(async (req) => {
       tag: "dm-notification",
     });
 
+    const is_array = Array.isArray(receiver.push_subscriptions);
+    const subscriptions = is_array ? receiver.push_subscriptions : [receiver.push_subscriptions];
 
     const pushResults = await Promise.allSettled(
-      receiver.push_subscriptions.map(async (sub: any) => {
+      subscriptions.map(async (sub: any) => {
         const pushConfig = {
           endpoint: sub.endpoint,
           keys: { auth: sub.auth_key, p256dh: sub.p256dh_key },
